@@ -1,0 +1,23 @@
+{
+  "name": "surgitrack",
+  "version": "1.0.0",
+  "description": "Companion web app for a surgical supply tracking device",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:idd-fall16/surgical-supply-tracker.git"
+  },
+  "keywords": [
+    "medical"
+  ],
+  "author": "Jessica Chang, Payton Goodrich, Jasper O'Leary, Isabel Yang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/idd-fall16/surgical-supply-tracker/issues"
+  },
+  "homepage": "https://github.com/idd-fall16/surgical-supply-tracker"
+}
