@@ -1,0 +1,10 @@
+body {
+  font-family: monospace, sans-serif;
+  margin-left: 50px;
+}
+#preview img {
+  border: 1px solid black;
+  float: left;
+  margin: 0 1em 1em 0;
+  width: 10em;
+}
