@@ -1,7 +1,17 @@
 var path = require('path');
 var base64 = require('./base64util')
-//var db = require(__dirname + '/../config/db');
-// var mongoose = require('mongoose');
+
+// Set up file-saving middleware
+var multer = require('multer')
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '.jpg');
+  }
+});
+var upload = multer({ storage: storage });
 
 module.exports = function(app) {
     // Server Routes ==================
@@ -17,10 +27,13 @@ module.exports = function(app) {
     /**
      * Uploads a photo with no cart assignment
      */
-    app.post('/api/photos/', function(req, res) {
-      console.log(req.body);
-      //TODO: decoding goes here, save to test maybe
-      res.send('You sent a photo with body string: ' + req.body).status(200).end();
+    app.post('/api/photos/', upload.single('devicePicture'), function(req, res) {
+        // TODO: upload DB (or maybe just directory)
+      if (!req.body) {
+        res.err('Error: no req body for saving image.').status(400).end();
+      } else {
+        res.send('Saved an image.').status(200).end();
+      }
     });
 
     // Frontend Routes ===============
@@ -36,6 +49,13 @@ module.exports = function(app) {
      */
     app.get('/api/:cartId/photos', function(req, res) {
       //TODO
+    });
+
+    /**
+     * Returns a list of all scanned items.
+     */
+    app.get('/api/items/', function(req, res) {
+      res.send('A json of strings will be here.').status(200).end();
     });
 
     /**
