@@ -1,5 +1,4 @@
 var path = require('path');
-var base64 = require('./base64util')
 
 // Set up file-saving middleware
 var multer = require('multer')
