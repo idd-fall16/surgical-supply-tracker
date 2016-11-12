@@ -1,5 +1,5 @@
 var path = require('path');
-var base64 = require('./base64util')
+// var base64 = require('./base64util')
 
 // Set up file-saving middleware
 var multer = require('multer')
@@ -61,7 +61,11 @@ module.exports = function(app) {
     /**
      * Home page
      */
-    app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname + '/public/index.html'));
-    });
+
+   app.get('/case', function (req, res) {
+       res.sendFile(path.join(__dirname + '/public/case.html'));
+   });
+
+
+
 }
