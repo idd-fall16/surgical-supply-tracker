@@ -1,17 +1,23 @@
 var path = require('path');
-var base64 = require('./base64util')
 
 // Set up file-saving middleware
 var multer = require('multer')
 var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '.jpg');
-  }
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/');
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '.jpg');
+    }
 });
 var upload = multer({ storage: storage });
+let imagePath = 'uploads/devicePicture.jpg';
+
+// Vision api
+var vision = require('@google-cloud/vision')({
+    projectId: 'surgitrack',
+    keyFilename: 'keyfile.json'
+});
 
 module.exports = function(app) {
     // Server Routes ==================
@@ -32,7 +38,14 @@ module.exports = function(app) {
       if (!req.body) {
         res.err('Error: no req body for saving image.').status(400).end();
       } else {
-        res.send('Saved an image.').status(200).end();
+        vision.detectText(imagePath, function(err, text, apiResponse) {
+          if (err) {
+            res.err(err).status(400).end();
+          } else {
+            console.log(text);
+            res.send(text).status(200).end();
+          }
+        });
       }
     });
 
@@ -52,9 +65,16 @@ module.exports = function(app) {
     });
 
     /**
-     * Returns a list of all scanned items.
+     * Returns a list of all scanned items across all cases.
      */
-    app.get('/api/items/', function(req, res) {
+    app.get('/api/labels/', function(req, res) {
+      res.send('A json of strings will be here.').status(200).end();
+    });
+
+    /**
+     * Returns a list of all scanned items for a particular case.
+     */
+    app.get('/api/labels/:caseID', function(req, res) {
       res.send('A json of strings will be here.').status(200).end();
     });
 
