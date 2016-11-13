@@ -43,22 +43,22 @@ __Example Response__
 ```
 {
 	"labels" : [
-		{ 
+		{
 			"label" : "Safety IV Catheter",
 			"cost" : "12",
 			"caseID" : 57
 		},
-		{ 
+		{
 			"label" : "Tracheostomy Tube Cuffless",
 			"cost" : "38",
 			"caseID" : 57
 		},
-		{ 
+		{
 			"label" : "Safety IV Catheter",
 			"cost" : "12",
 			"caseID" : 57
 		},
-		{ 
+		{
 			"label" : "Transpac IV Monitoring Kit",
 			"cost" : "19",
 			"caseID" : 61
@@ -78,12 +78,12 @@ __Example Response__
 {
 	"caseID" : "57",
 	"labels" : [
-		{ 
+		{
 			"label" : "Safety IV Catheter",
 			"cost" : "12",
 			"caseID" : "57"
 		},
-		{ 
+		{
 			"label" : "Tracheostomy Tube Cuffless",
 			"cost" : "38",
 			"caseID" : "57"

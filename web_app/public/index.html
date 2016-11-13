@@ -26,42 +26,14 @@
                     <th>Total</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Raytex Sponge Guaze</td>
-                    <td>0</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <td>1/2 x 1/2 Sponge</td>
-                    <td>0</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <td>Gloves</td>
-                    <td>0</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <td>1 x 1 Sponge</td>
-                    <td>0</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <td>Surgicel 1x1 Nu-Knit</td>
-                    <td>0</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <td>1/2 x 1/2 Sponge</td>
-                    <td>0</td>
-                    <td>10</td>
-                  </tr>
-                  <tr>
-                    <td>1/2 x 1/2 Sponge</td>
-                    <td>0</td>
-                    <td>10</td>
-                  </tr>
+                <tbody id="page_content_table">
+                  <script type="text/template" id="page_content_table_template">
+                    <tr>
+                      <td><%= item_name %></td>
+                      <td><%= donating %></td>
+                      <td><%= total %></td>
+                    </tr>
+                  </script>
                 </tbody>
               </table>
             </div>
