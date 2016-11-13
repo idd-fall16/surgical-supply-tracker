@@ -1,64 +1,16 @@
 (function($){
 
   var CaseItemList  = Backbone.Model.extend({
-    defaults: {
+      defaults: {
 
-      "items": [
-        {
-          "item_name": "Raytex Sponge Guaze",
-          "item_number": "12",
-          "donating": "0",
-          "total": "30",
-          "cost": "12"
-        },
-        {
-          "item_name": "1/2 x 1/2 Sponge",
-          "item_number": "123",
-          "donating": "0",
-          "total": "0",
-          "cost": "12"
-        },
-        {
-          "item_name": "1x1 Sponge",
-          "item_number": "123",
-          "donating": "0",
-          "total": "0",
-          "cost": "12"
-        },
-        {
-          "item_name": "Surgicel Nu-Knit",
-          "item_number": "123",
-          "donating": "0",
-          "total": "50",
-          "cost": "12"
-        },
-        {
-          "item_name": "2-0 Vicryl Suture",
-          "item_number": "123",
-          "donating": "0",
-          "total": "30",
-          "cost": "12"
-        },
-        {
-          "item_name": "Surgifoam",
-          "item_number": "123",
-          "donating" : "0",
-          "total": "30",
-          "cost": "12"
-        },
-        {
-          "item_name": "Surgicel",
-          "item_number": "123",
-          "donating": "0",
-          "total": "30",
-          "cost": "12"
-        }]
 
-  }})
+      },
+      url: '/api/cases/3'
+})
 
   var Case = Backbone.Collection.extend({
     model: CaseItemList,
-    url: '/json/profiles.json'
+    url: ''
   })
 
   var CaseView = Backbone.View.extend({
@@ -73,14 +25,15 @@
     },
     initialize: function(options){
       _.bindAll(this, 'render');
-      this.case_items = this.model.get("items");
+      var scope = this;
       this.collection = new Case();
-      // this.collection.bind('btn_start_scan', this.startScanning);
-
-      this.render();
+      this.model.fetch().done(function(){
+        scope.render();
+      });
     },
     render: function(){
       var scope = this;
+      this.case_items = this.model.get("items");
       //render table view
 
       //render status and action
@@ -102,8 +55,6 @@
       $('#btn_stop_scan').show();
 
 
-
-      // debugger;
 
     },
     stopScanning: function(){
