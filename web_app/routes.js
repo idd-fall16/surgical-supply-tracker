@@ -78,11 +78,26 @@ module.exports = function(app) {
     });
 
     /**
+     * Returns a list of all cases.
+     */
+    app.get('/api/cases/', function(req, res) {
+      //TODO: unfake data
+      fs.readFile('dummyCases.json', function(err, data) {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          var json = JSON.parse(data.toString());
+          res.status(200).json(json);
+        }
+      });
+    });
+
+    /**
      * Returns a list of all scanned items for a particular case.
      */
     app.get('/api/cases/:caseID', function(req, res) {
       //TODO: unfake data
-      fs.readFile('dummyData.json', function(err, data) {
+      fs.readFile('dummyItemList.json', function(err, data) {
         if (err) {
           res.status(400).send(err);
         } else {
