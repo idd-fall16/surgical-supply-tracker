@@ -53,6 +53,11 @@ module.exports = function(app) {
     /**
      * Displays all photos taken ever
      */
+
+    app.get('/api', function(req, res){
+       res.json({ message: 'Api for Surgiscan' });
+    })
+
     app.get('/api/photos/', function(req, res) {
       res.send('There will be photos here.').status(200).end();
     });
@@ -74,7 +79,7 @@ module.exports = function(app) {
     /**
      * Returns a list of all scanned items for a particular case.
      */
-    app.get('/api/labels/:caseID', function(req, res) {
+    app.get('/api/cases/:caseID', function(req, res) {
       res.send('A json of strings will be here.').status(200).end();
     });
 
