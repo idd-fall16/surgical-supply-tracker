@@ -1,0 +1,67 @@
+{
+  "cases" : [
+    {
+      "_id" : "1",
+      "surgery_type" : "Cranial Something",
+      "surgeon" : "Jessica Changsta, MD",
+      "items" : [
+        {
+          "_id" : "1",
+          "item_name" : "Raytex Sponge Gauze",
+          "donating": "0",
+          "total": "30",
+          "cost": "12"
+        },
+        {
+          "_id" : "2",
+          "item_name": "1/2 x 1/2 Sponge",
+          "donating": "0",
+          "total": "0",
+          "cost": "12"
+        }
+      ]
+    },
+    {
+      "_id" : "2",
+      "surgery_type" : "Bubonic Plague Fix",
+      "surgeon" : "Payton Goodrich, MD",
+      "items" : [
+        {
+          "_id" : "1",
+          "item_name" : "Raytex Sponge Gauze",
+          "donating": "0",
+          "total": "30",
+          "cost": "12"
+        },
+        {
+          "_id" : "2",
+          "item_name": "1/2 x 1/2 Sponge",
+          "donating": "0",
+          "total": "0",
+          "cost": "12"
+        }
+      ]
+    },
+    {
+      "_id" : "2",
+      "surgery_type" : "Burn Excision",
+      "surgeon" : "Isabel Yang, MD",
+      "items" : [
+        {
+          "_id" : "1",
+          "item_name" : "Raytex Sponge Gauze",
+          "donating": "0",
+          "total": "30",
+          "cost": "12"
+        },
+        {
+          "_id" : "2",
+          "item_name": "1/2 x 1/2 Sponge",
+          "donating": "0",
+          "total": "0",
+          "cost": "12"
+        }
+      ]
+    }
+  ]
+}
