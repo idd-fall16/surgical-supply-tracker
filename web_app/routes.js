@@ -1,4 +1,5 @@
 var path = require('path');
+var fs = require('fs');
 
 // Set up file-saving middleware
 var multer = require('multer')
@@ -74,18 +75,22 @@ module.exports = function(app) {
     /**
      * Returns a list of all scanned items for a particular case.
      */
-    app.get('/api/labels/:caseID', function(req, res) {
-      res.send('A json of strings will be here.').status(200).end();
+    app.get('/api/cases/:caseID', function(req, res) {
+      //TODO: unfake data
+      fs.readFile('dummyData.json', function(err, data) {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          var json = JSON.parse(data.toString());
+          res.status(200).json(json);
+        }
+      });
     });
 
     /**
      * Home page
      */
-
-   app.get('/case', function (req, res) {
-       res.sendFile(path.join(__dirname + '/public/case.html'));
-   });
-
-
-
+    app.get('*', function (req, res) {
+        res.sendFile(path.join(__dirname + '/public/index.html'));
+    });
 }
