@@ -1,6 +1,9 @@
 var path = require('path');
 var fs = require('fs');
 
+// Import models for DB
+var models = require('./models.js');
+
 // Set up file-saving middleware
 var multer = require('multer')
 var storage = multer.diskStorage({
