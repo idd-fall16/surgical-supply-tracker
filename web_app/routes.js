@@ -110,11 +110,11 @@ module.exports = function(app) {
     /**
      * Home page
      */
-     app.get('/index', function (req, res) {
-         res.sendFile(path.join(__dirname + '/public/index.html'));
+     app.get('/case/:caseID', function (req, res) {
+         res.sendFile(path.join(__dirname + '/public/case.html'));
      });
 
     app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname + '/public/yo.html'));
+        res.sendFile(path.join(__dirname + '/public/case.html'));
     });
 }
