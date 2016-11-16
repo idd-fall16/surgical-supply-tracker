@@ -15,7 +15,7 @@ var storage = multer.diskStorage({
     }
 });
 var upload = multer({ storage: storage });
-var imagePath = 'uploads/devicePicture.jpg';
+let imagePath = 'uploads/devicePicture.jpg';
 
 // Vision api
 var vision = require('@google-cloud/vision')({
