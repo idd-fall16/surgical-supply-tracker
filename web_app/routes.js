@@ -1,6 +1,9 @@
 var path = require('path');
 var fs = require('fs');
 
+// Import models for DB
+var models = require('./models.js');
+
 // Set up file-saving middleware
 var multer = require('multer')
 var storage = multer.diskStorage({
@@ -12,7 +15,7 @@ var storage = multer.diskStorage({
     }
 });
 var upload = multer({ storage: storage });
-let imagePath = 'uploads/devicePicture.jpg';
+var imagePath = 'uploads/devicePicture.jpg';
 
 // Vision api
 var vision = require('@google-cloud/vision')({
