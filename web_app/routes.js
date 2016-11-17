@@ -15,13 +15,17 @@ var storage = multer.diskStorage({
     }
 });
 var upload = multer({ storage: storage });
-let imagePath = 'uploads/devicePicture.jpg';
+var imagePath = 'uploads/devicePicture.jpg';
 
 // Vision api
 var vision = require('@google-cloud/vision')({
     projectId: 'surgitrack',
     keyFilename: 'keyfile.json'
 });
+
+var options = {
+  verbose: false
+};
 
 module.exports = function(app) {
     // Server Routes ==================
@@ -40,14 +44,18 @@ module.exports = function(app) {
     app.post('/api/photos/', upload.single('devicePicture'), function(req, res) {
         // TODO: upload DB (or maybe just directory)
       if (!req.body) {
-        res.err('Error: no req body for saving image.').status(400).end();
+        res.send('Error: no req body for saving image.').status(400).end();
       } else {
-        vision.detectText(imagePath, function(err, text, apiResponse) {
+        console.log('Sending image to vision api: ' + imagePath);
+        vision.detectText(imagePath, options, function(err, text, apiResponse) {
           if (err) {
-            res.err(err).status(400).end();
+            console.log("Error in parsing.");
+            console.log(err);
+            res.status(400).send(err);
           } else {
+            console.log("Successful parse.");
             console.log(text);
-            res.send(text).status(200).end();
+            res.status(200).send(text);
           }
         });
       }
