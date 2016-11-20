@@ -116,11 +116,15 @@ module.exports = function(app) {
     /**
      * Home page
      */
-     app.get('/case/:caseID', function (req, res) {
-         res.sendFile(path.join(__dirname + '/public/case.html'));
+     app.get('/cases/:caseID', function (req, res) {
+         res.sendFile(path.join(__dirname + 'case.html'));
      });
 
-    app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname + '/public/case.html'));
-    });
+     app.get('/onboarding', function (req, res) {
+         res.sendFile(path.join(__dirname + 'onboarding.html'));
+     });
+
+     app.get('*', function (req, res) {
+         res.send(req.params);
+     });
 }
