@@ -26,15 +26,6 @@ var vision = require('@google-cloud/vision')({
 module.exports = function(app) {
     // Server Routes ==================
     /**
-     * Uploads a photo to a cart.
-     * The photo should be a base64-encoded string in the body of
-     * the request
-     */
-    app.post('/api/:cartId/:photoId', function(req, res) {
-        //asdf
-    });
-
-    /**
      * Uploads a photo with no cart assignment
      */
     app.post('/api/photos/', upload.single('devicePicture'), function(req, res) {
@@ -64,24 +55,6 @@ module.exports = function(app) {
     app.get('/api', function(req, res){
        res.json({ message: 'Api for Surgiscan' });
     })
-
-    app.get('/api/photos/', function(req, res) {
-      res.send('There will be photos here.').status(200).end();
-    });
-
-    /**
-     * Displays all photos for a particular cart
-     */
-    app.get('/api/:cartId/photos', function(req, res) {
-      //TODO
-    });
-
-    /**
-     * Returns a list of all scanned items across all cases.
-     */
-    app.get('/api/labels/', function(req, res) {
-      res.send('A json of strings will be here.').status(200).end();
-    });
 
     /**
      * Returns a list of all cases.
@@ -117,11 +90,11 @@ module.exports = function(app) {
      * Home page
      */
      app.get('/cases/:caseID', function (req, res) {
-         res.sendFile(path.join(__dirname + 'case.html'));
+         res.sendFile(path.join(__dirname + '/public/case.html'));
      });
 
      app.get('/onboarding', function (req, res) {
-         res.sendFile(path.join(__dirname + 'onboarding.html'));
+         res.sendFile(path.join(__dirname + '/public/onboarding.html'));
      });
 
      app.get('*', function (req, res) {
