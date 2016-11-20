@@ -26,12 +26,35 @@ var vision = require('@google-cloud/vision')({
 module.exports = function(app) {
     // Server Routes ==================
     /**
-     * Uploads a photo with no cart assignment
+     * Creates a new case assignment
      */
-    app.post('/api/photos/', upload.single('devicePicture'), function(req, res) {
+    app.post('/api/cases/:caseID', function(req, res) {
+      if (!req.params.caseID || !req.body) {
+        res.status(400).send('Error: incorrect parameters for creating case.');
+      } else {
+        var newCase = new models.Case({
+          caseID: req.params.caseID,
+          surgery_type: req.body.surgery_type,
+          surgeon: req.body.surgeon,
+          items: []
+        });
+        newCase.save(function(err) {
+          if (err) {
+            res.status(400).send('Error: could not save case: ' + newCase);
+          } else {
+            res.status(200).send('Successfully created case: ' + newCase);
+          }
+        });
+      }
+    });
+
+    /**
+     * Uploads a photo with no to CASE_ID
+     */
+    app.post('/api/cases/:caseID/photos/', upload.single('devicePicture'), function(req, res) {
         // TODO: upload DB (or maybe just directory)
       if (!req.body) {
-        res.send('Error: no req body for saving image.').status(400).end();
+        res.status(400).send('Error: no req body for saving image.');
       } else {
         vision.detectText(imagePath, function(err, text, apiResponse) {
           if (err) {
@@ -54,13 +77,25 @@ module.exports = function(app) {
 
     app.get('/api', function(req, res){
        res.json({ message: 'Api for Surgiscan' });
-    })
+    });
 
     /**
      * Returns a list of all cases.
      */
     app.get('/api/cases/', function(req, res) {
-      //TODO: unfake data
+      models.Case.find(function(err, cases) {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          res.status(200).json(cases);
+        }
+      });
+    });
+
+    /**
+     * Returns a list of DUMMY cases.
+     */
+    app.get('/api/dummy/cases/', function(req, res) {
       fs.readFile('dummyCases.json', function(err, data) {
         if (err) {
           res.status(400).send(err);
@@ -72,9 +107,16 @@ module.exports = function(app) {
     });
 
     /**
-     * Returns a list of all scanned items for a particular case.
+     * Returns info for a case with caseID.
      */
     app.get('/api/cases/:caseID', function(req, res) {
+
+    });
+
+    /**
+     * Returns info for a dummy case.
+     */
+    app.get('/api/dummy/cases/:caseID', function(req, res) {
       //TODO: unfake data
       fs.readFile('dummyCase.json', function(err, data) {
         if (err) {
