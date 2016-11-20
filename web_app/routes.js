@@ -23,10 +23,6 @@ var vision = require('@google-cloud/vision')({
     keyFilename: 'keyfile.json'
 });
 
-var options = {
-  verbose: false
-};
-
 module.exports = function(app) {
     // Server Routes ==================
     /**
@@ -46,8 +42,7 @@ module.exports = function(app) {
       if (!req.body) {
         res.send('Error: no req body for saving image.').status(400).end();
       } else {
-        console.log('Sending image to vision api: ' + imagePath);
-        vision.detectText(imagePath, options, function(err, text, apiResponse) {
+        vision.detectText(imagePath, function(err, text, apiResponse) {
           if (err) {
             console.log("Error in parsing.");
             console.log(err);
@@ -108,7 +103,7 @@ module.exports = function(app) {
      */
     app.get('/api/cases/:caseID', function(req, res) {
       //TODO: unfake data
-      fs.readFile('dummyItemList.json', function(err, data) {
+      fs.readFile('dummyCase.json', function(err, data) {
         if (err) {
           res.status(400).send(err);
         } else {
