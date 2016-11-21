@@ -56,7 +56,7 @@ module.exports = function(app) {
     /**
      * Uploads a photo with to CASE_ID
      */
-    app.post('/api/cases/:caseID/photos/', upload.single('devicePicture'), function(req, res) {
+    app.post('/api/cases/:case_number/photos/', upload.single('devicePicture'), function(req, res) {
         // TODO: upload DB (or maybe just directory)
       if (!req.body) {
         res.status(400).send('Error: no req body for saving image.');
@@ -68,7 +68,7 @@ module.exports = function(app) {
             res.status(400).send(err);
           } else {
             console.log("Successful parse.");
-            //FIXME:
+            //FIXME: how to choose best text?
             var itemName = text[0];
 
             //FIXME: DRY this up okay
@@ -82,8 +82,9 @@ module.exports = function(app) {
             });
             // Find case with corresponding case number
             models.Case.findOne({ case_number: req.params.case_number }, function (err, matchingCase) {
-              if (!req.params.case_number || !req.body) {
-                res.status(400).send('Error: incorrect parameters for creating case.');
+              if (err || !matchingCase || !req.params.case_number) {
+                console.log('sad');
+                res.status(400).send(err);
               } else {
                 matchingCase.items.push(newItem);
                 matchingCase.save(function(err) {
