@@ -149,7 +149,13 @@ module.exports = function(app) {
      * Returns info for a case with caseID.
      */
     app.get('/api/cases/:caseID', function(req, res) {
-
+      models.Case.findOne(function(err, oneCase) {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          res.status(200).json(oneCase);
+        }
+      });
     });
 
     /**
