@@ -26,14 +26,19 @@ var vision = require('@google-cloud/vision')({
 module.exports = function(app) {
     // Server Routes ==================
     /**
-     * Creates a new case assignment
+     * Creates a new case assignment. Expects a case_number as parameter passed in in the URL.
+     * Expects a body JSON as follows:
+     * {
+        surgery_type : String,
+        surgeon : String
+     * }
      */
-    app.post('/api/cases/:caseID', function(req, res) {
-      if (!req.params.caseID || !req.body) {
+    app.post('/api/cases/:case_number', function(req, res) {
+      if (!req.params.case_number || !req.body) {
         res.status(400).send('Error: incorrect parameters for creating case.');
       } else {
         var newCase = new models.Case({
-          caseID: req.params.caseID,
+          case_number: req.params.case_number,
           surgery_type: req.body.surgery_type,
           surgeon: req.body.surgeon,
           items: []
@@ -49,7 +54,7 @@ module.exports = function(app) {
     });
 
     /**
-     * Uploads a photo with no to CASE_ID
+     * Uploads a photo with to CASE_ID
      */
     app.post('/api/cases/:caseID/photos/', upload.single('devicePicture'), function(req, res) {
         // TODO: upload DB (or maybe just directory)
@@ -65,6 +70,40 @@ module.exports = function(app) {
             console.log("Successful parse.");
             console.log(text);
             res.status(200).send(text);
+          }
+        });
+      }
+    });
+
+    /**
+     * Uploads a photo with to CASE_ID, witout photo parsing
+     */
+    app.post('/api/cases/:case_number/text/', upload.single('devicePicture'), function(req, res) {
+        // TODO: upload DB (or maybe just directory)
+      if (!req.body) {
+        res.status(400).send('Error: no req body for saving image.');
+      } else {
+        // Create new item
+        var newItem = new models.Item({
+          item_number: req.body.item_number,
+          item_name: req.body.item_name,
+          donating: 0,
+          total: 0,
+          cost: 0
+        });
+        // Find case with corresponding case number
+        models.Case.findOne({ case_number: req.params.case_number }, function (err, matchingCase) {
+          if (!req.params.case_number || !req.body) {
+            res.status(400).send('Error: incorrect parameters for creating case.');
+          } else {
+            matchingCase.items.push(newItem);
+            matchingCase.save(function(err) {
+              if (err) {
+                res.status(200).send('Error: could not save new item');
+              } else {
+                res.status(200).send('Added item in:\n' + matchingCase);
+              }
+            });
           }
         });
       }

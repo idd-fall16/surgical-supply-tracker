@@ -13,14 +13,17 @@ db.once('open', function() {
 var Schema = mongoose.Schema;
 
 var itemSchema = new Schema({
-  name: String,
-  caseId: Number
+  item_number: Number,
+  item_name: String,
+  donating: Number,
+  total: Number,
+  cost: Number
 });
 
 var Item = mongoose.model('Item', itemSchema);
 
 var caseSchema = new Schema({
-  caseId: Number,
+  case_number: { type: Number, index: true, unique: true },
   surgery_type: String,
   surgeon: String,
   items: [itemSchema]
