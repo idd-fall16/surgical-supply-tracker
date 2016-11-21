@@ -68,8 +68,33 @@ module.exports = function(app) {
             res.status(400).send(err);
           } else {
             console.log("Successful parse.");
-            console.log(text);
-            res.status(200).send(text);
+            //FIXME:
+            var itemName = text[0];
+
+            //FIXME: DRY this up okay
+            // Create new item
+            var newItem = new models.Item({
+              item_number: 42,
+              item_name: itemName,
+              donating: 0,
+              total: 0,
+              cost: 0
+            });
+            // Find case with corresponding case number
+            models.Case.findOne({ case_number: req.params.case_number }, function (err, matchingCase) {
+              if (!req.params.case_number || !req.body) {
+                res.status(400).send('Error: incorrect parameters for creating case.');
+              } else {
+                matchingCase.items.push(newItem);
+                matchingCase.save(function(err) {
+                  if (err) {
+                    res.status(200).send('Error: could not save new item');
+                  } else {
+                    res.status(200).send('Added item in:\n' + matchingCase);
+                  }
+                });
+              }
+            });
           }
         });
       }
