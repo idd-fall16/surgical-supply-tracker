@@ -172,12 +172,14 @@ module.exports = function(app) {
     });
 
     /**
-     * Returns info for a case with caseID.
+     * Returns info for a case with case_number.
      */
-    app.get('/api/cases/:caseID', function(req, res) {
-      models.Case.findOne(function(err, oneCase) {
+    app.get('/api/cases/:case_number', function(req, res) {
+      models.Case.findOne({ case_number: req.params.case_number }, function(err, oneCase) {
         if (err) {
           res.status(400).send(err);
+        } else if (!oneCase) {
+          res.status(400).json({ "error" : "No case with that number." });
         } else {
           res.status(200).json(oneCase);
         }
