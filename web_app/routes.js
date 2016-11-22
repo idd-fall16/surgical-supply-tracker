@@ -56,7 +56,7 @@ module.exports = function(app) {
     /**
      * Uploads a photo with to CASE_ID
      */
-    app.post('/api/cases/:case_number/photos/', upload.single('devicePicture'), function(req, res) {
+    app.post('/api/cases/:case_number/items/photo', upload.single('devicePicture'), function(req, res) {
         // TODO: upload DB (or maybe just directory)
       if (!req.body) {
         res.status(400).send('Error: no req body for saving image.');
@@ -106,7 +106,7 @@ module.exports = function(app) {
     /**
      * Uploads a photo with to CASE_ID, witout photo parsing
      */
-    app.post('/api/cases/:case_number/text/', upload.single('devicePicture'), function(req, res) {
+    app.post('/api/cases/:case_number/items/json', upload.single('devicePicture'), function(req, res) {
         // TODO: upload DB (or maybe just directory)
       if (!req.body) {
         res.status(400).send('Error: no req body for saving image.');
