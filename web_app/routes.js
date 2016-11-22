@@ -85,6 +85,8 @@ module.exports = function(app) {
               if (err || !matchingCase || !req.params.case_number) {
                 console.log('sad');
                 res.status(400).send(err);
+              } else if (!matchingCase) {
+                res.status(404).json({ "error" : "No matching case found."});
               } else {
                 matchingCase.items.push(newItem);
                 matchingCase.save(function(err) {
@@ -121,6 +123,8 @@ module.exports = function(app) {
         models.Case.findOne({ case_number: req.params.case_number }, function (err, matchingCase) {
           if (!req.params.case_number || !req.body) {
             res.status(400).send('Error: incorrect parameters for creating case.');
+          } else if (!matchingCase) {
+            res.status(404).json({ "error" : "No matching case found."});
           } else {
             matchingCase.items.push(newItem);
             matchingCase.save(function(err) {
@@ -179,7 +183,7 @@ module.exports = function(app) {
         if (err) {
           res.status(400).send(err);
         } else if (!oneCase) {
-          res.status(400).json({ "error" : "No case with that number." });
+          res.status(404).json({ "error" : "No case with that number." });
         } else {
           res.status(200).json(oneCase);
         }
