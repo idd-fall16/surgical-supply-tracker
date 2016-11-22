@@ -45,7 +45,7 @@ module.exports = function(app) {
         });
         newCase.save(function(err) {
           if (err) {
-            res.status(400).send('Error: could not save case: ' + newCase);
+            res.status(400).send('Error: could not save case: ' + newCase + '\n error is: ' + err);
           } else {
             res.status(200).send('Successfully created case: ' + newCase);
           }
