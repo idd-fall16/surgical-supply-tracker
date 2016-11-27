@@ -92,7 +92,7 @@ module.exports = function(app) {
               } else if (!matchingCase) {
                 res.status(404).json({ "error" : "No matching case found."});
               } else {
-                matchingCase.items.push(newItem);
+                matchingCase.addItem(newItem);
                 matchingCase.save(function(err) {
                   if (err) {
                     res.status(400).send('Error: could not save new item');
@@ -130,7 +130,7 @@ module.exports = function(app) {
           } else if (!matchingCase) {
             res.status(404).json({ "error" : "No matching case found."});
           } else {
-            matchingCase.items.push(newItem);
+            matchingCase.addItem(newItem);
             matchingCase.save(function(err) {
               if (err) {
                 res.status(400).send('Error: could not save new item');
