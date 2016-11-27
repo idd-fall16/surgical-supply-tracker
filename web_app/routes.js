@@ -91,7 +91,7 @@ module.exports = function(app) {
                 matchingCase.items.push(newItem);
                 matchingCase.save(function(err) {
                   if (err) {
-                    res.status(200).send('Error: could not save new item');
+                    res.status(400).send('Error: could not save new item');
                   } else {
                     res.status(200).send('Added item in:\n' + matchingCase);
                   }
@@ -129,7 +129,7 @@ module.exports = function(app) {
             matchingCase.items.push(newItem);
             matchingCase.save(function(err) {
               if (err) {
-                res.status(200).send('Error: could not save new item');
+                res.status(400).send('Error: could not save new item');
               } else {
                 res.status(200).send('Added item in:\n' + matchingCase);
               }
