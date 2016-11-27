@@ -45,7 +45,7 @@ module.exports = function(app) {
         });
         newCase.save(function(err) {
           if (err) {
-            res.status(400).send('Error: could not save case: ' + newCase);
+            res.status(400).send('Error: could not save case: ' + newCase + '\n error is: ' + err);
           } else {
             res.status(200).send('Successfully created case: ' + newCase);
           }
@@ -56,7 +56,7 @@ module.exports = function(app) {
     /**
      * Uploads a photo with to CASE_ID
      */
-    app.post('/api/cases/:case_number/photos/', upload.single('devicePicture'), function(req, res) {
+    app.post('/api/cases/:case_number/items/photo', upload.single('devicePicture'), function(req, res) {
         // TODO: upload DB (or maybe just directory)
       if (!req.body) {
         res.status(400).send('Error: no req body for saving image.');
@@ -85,6 +85,8 @@ module.exports = function(app) {
               if (err || !matchingCase || !req.params.case_number) {
                 console.log('sad');
                 res.status(400).send(err);
+              } else if (!matchingCase) {
+                res.status(404).json({ "error" : "No matching case found."});
               } else {
                 matchingCase.items.push(newItem);
                 matchingCase.save(function(err) {
@@ -104,7 +106,7 @@ module.exports = function(app) {
     /**
      * Uploads a photo with to CASE_ID, witout photo parsing
      */
-    app.post('/api/cases/:case_number/text/', upload.single('devicePicture'), function(req, res) {
+    app.post('/api/cases/:case_number/items/json', upload.single('devicePicture'), function(req, res) {
         // TODO: upload DB (or maybe just directory)
       if (!req.body) {
         res.status(400).send('Error: no req body for saving image.');
@@ -121,6 +123,8 @@ module.exports = function(app) {
         models.Case.findOne({ case_number: req.params.case_number }, function (err, matchingCase) {
           if (!req.params.case_number || !req.body) {
             res.status(400).send('Error: incorrect parameters for creating case.');
+          } else if (!matchingCase) {
+            res.status(404).json({ "error" : "No matching case found."});
           } else {
             matchingCase.items.push(newItem);
             matchingCase.save(function(err) {
@@ -179,7 +183,7 @@ module.exports = function(app) {
         if (err) {
           res.status(400).send(err);
         } else if (!oneCase) {
-          res.status(400).json({ "error" : "No case with that number." });
+          res.status(404).json({ "error" : "No case with that number." });
         } else {
           res.status(200).json(oneCase);
         }
