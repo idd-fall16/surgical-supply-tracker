@@ -5,7 +5,7 @@
 
 
       },
-      url: '/api/cases/3'
+      url: '/api/cases/1'
 })
 
   var Case = Backbone.Collection.extend({
@@ -25,13 +25,16 @@
     initialize: function(options){
       _.bindAll(this, 'render');
       var scope = this;
+      this.listenTo(this.model, 'change', this.render);
+
       this.collection = new Case();
-      this.model.fetch().done(function(){
-        scope.render();
-      });
+      this.model.fetch();
+
+
     },
     render: function(){
       var scope = this;
+      console.log("render")
       this.case_items = this.model.get("items");
       //render table view
 
@@ -53,6 +56,17 @@
 
   });
 
+  var Workspace = Backbone.Router.extend({
+    routes: {
+      "cases/:id":         "getCase",
+    },
+    getCase : function(id){
+      debugger;
+      console.log("hi");
+      console.log(id);
+    }
+  })
+  var app_router = new Workspace;
   var caseView = new CaseView({model: new CaseItemList()});
 
 
