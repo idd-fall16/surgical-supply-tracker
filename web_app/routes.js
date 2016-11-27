@@ -70,6 +70,10 @@ module.exports = function(app) {
             console.log("Successful parse.");
             //FIXME: how to choose best text?
             var itemName = text[0];
+            if (!itemName) {
+              res.status(400).json({ "error" : "No text found in photo. "});
+              return;
+            }
 
             //FIXME: DRY this up okay
             // Create new item
@@ -83,7 +87,7 @@ module.exports = function(app) {
             // Find case with corresponding case number
             models.Case.findOne({ case_number: req.params.case_number }, function (err, matchingCase) {
               if (err || !matchingCase || !req.params.case_number) {
-                console.log('sad');
+                console.log('DB error.');
                 res.status(400).send(err);
               } else if (!matchingCase) {
                 res.status(404).json({ "error" : "No matching case found."});
@@ -91,7 +95,7 @@ module.exports = function(app) {
                 matchingCase.items.push(newItem);
                 matchingCase.save(function(err) {
                   if (err) {
-                    res.status(200).send('Error: could not save new item');
+                    res.status(400).send('Error: could not save new item');
                   } else {
                     res.status(200).send('Added item in:\n' + matchingCase);
                   }
@@ -129,7 +133,7 @@ module.exports = function(app) {
             matchingCase.items.push(newItem);
             matchingCase.save(function(err) {
               if (err) {
-                res.status(200).send('Error: could not save new item');
+                res.status(400).send('Error: could not save new item');
               } else {
                 res.status(200).send('Added item in:\n' + matchingCase);
               }
