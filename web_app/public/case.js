@@ -26,10 +26,10 @@
       _.bindAll(this, 'render');
       var scope = this;
       this.listenTo(this.model, 'change', this.render);
+
       this.collection = new Case();
-      this.model.fetch().done(function(){
-        scope.render();
-      });
+      this.model.fetch();
+
 
     },
     render: function(){
@@ -55,6 +55,7 @@
 
 
   });
+
   var Workspace = Backbone.Router.extend({
     routes: {
       "cases/:id":         "getCase",
