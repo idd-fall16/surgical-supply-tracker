@@ -28,18 +28,17 @@
     initialize: function(options){
       _.bindAll(this, 'render');
       var scope = this;
-      $(this.el).find(this.el_footer).append("<div class='columns small-3'><button id='btn_stop_scan' href='#' class='button'><h3>STOP SCANNING</h3></button></div>");
       this.collection = new Case();
-      this.listenTo(this.collection, 'add', function() {console.log('change'); this.render()});
-      setInterval(function() {
-        scope.collection.fetch();
-      }, 1000);
+      this.listenTo(this.collection, 'add', this.render);
+      this.listenTo(this.collection, 'change', this.render);
+
+      this.collection.fetch();
+      $(this.el).find(this.el_footer).append("<div class='columns small-3'><button id='btn_stop_scan' href='#' class='button'><h3>STOP SCANNING</h3></button></div>");
 
     },
     render: function(){
       var scope = this;
       console.log("render")
-      this.case_table.empty();
       this.case_items = this.model.get("items");
       //render table view
 
@@ -49,18 +48,13 @@
       // $('#btn_stop_scan').hide();
       // debugger;
       console.log("collection: " + JSON.stringify(this.collection));
-      this.collection.each(function(model) {
-        var case_item = model.attributes;
-        var new_case_item = scope.template(case_item);
-        scope.case_table.append(new_case_item);
-      });
-      // _.each(scope.collection, function(el, idx, list){ // in case collection is not empty
-      //   //self.appendItem(item);
-      //   console.log(el);
-      //   console.log(list);
-      //   var new_case_item = scope.template(case_item);
-      //   scope.case_table.append(new_case_item);
-      // }, this);
+      this.collection.each(function(model){
+        var case_item = new CaseItemView({
+          model: model
+        });
+        debugger;
+        scope.case_table.append(model.attributes)
+      })
     },
     stopScanning: function(){
       console.log("scanning stopped.");
@@ -69,18 +63,28 @@
 
   });
 
+  var CaseItemView = Backbone.View.extend({
+    template: _.template($('#page_content_table_template').html()),
+    el: $('#view_case'),
+    intialize: function(){
+      console.log("case item view");
+    },
+    render: function() {
+      debugger;
+     this.$el.html(this.template(this.model.attributes));
+     return this;
+    }
+
+  });
+
   var Workspace = Backbone.Router.extend({
     routes: {
       "cases/:id":         "getCase",
-      "":                  "home"
     },
     getCase : function(id){
       debugger;
       console.log("hi");
       console.log(id);
-    },
-    home: function(){
-      console.log()
     }
   })
   var app_router = new Workspace;

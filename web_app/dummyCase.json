@@ -1,56 +1,27 @@
 {
-    "_id" : "1",
-    "surgery_type" : "Cranial Something",
-    "surgeon" : "Jessica Changsta, MD",
-    "items": [
-           {
-             "item_name": "Raytex Sponge Guaze",
-             "item_number": "12",
-             "donating": "0",
-             "total": "30",
-             "cost": "12"
-           },
-           {
-             "item_name": "1/2 x 1/2 Sponge",
-             "item_number": "123",
-             "donating": "0",
-             "total": "0",
-             "cost": "12"
-           },
-           {
-             "item_name": "1x1 Sponge",
-             "item_number": "123",
-             "donating": "0",
-             "total": "0",
-             "cost": "12"
-           },
-           {
-             "item_name": "Surgicel Nu-Knit",
-             "item_number": "123",
-             "donating": "0",
-             "total": "50",
-             "cost": "12"
-           },
-           {
-             "item_name": "2-0 Vicryl Suture",
-             "item_number": "123",
-             "donating": "0",
-             "total": "30",
-             "cost": "12"
-           },
-           {
-             "item_name": "Surgifoam",
-             "item_number": "123",
-             "donating" : "0",
-             "total": "30",
-             "cost": "12"
-           },
-           {
-             "item_name": "Surgicel",
-             "item_number": "123",
-             "donating": "0",
-             "total": "30",
-             "cost": "12"
-           }
+  "cases" : [
+    {
+      "_id" : "1",
+      "surgery_type" : "Cranial Something",
+      "surgeon" : "Jessica Changsta, MD",
+      "items" : [
+        {
+          "_id" : "1",
+          "case_id" : "1",
+          "item_name" : "Safety IV Catheters",
+          "donating": "0",
+          "total": "30",
+          "cost": "12"
+        },
+        {
+          "_id" : "2",
+          "case_id" : "1",
+          "item_name": "Tracheostomy Tube Cuffless",
+          "donating": "0",
+          "total": "0",
+          "cost": "12"
+        }
       ]
+    }
+  ]
 }
