@@ -20,6 +20,29 @@ var itemSchema = new Schema({
   cost: Number
 });
 
+// Given a an array of text items scanned from the vision API,
+// Classify the item and return a standardized title
+// Returns: String which is the standardized title
+// FIXME: use actual mapping to do this
+itemSchema.statics.classifyItem = function(text) {
+ var titles = {
+   catheter : 'Safety IV Catheters',
+   tracheostomy : 'Tracheostomy Tube Cuffless',
+   transpac : 'Transpac IV Monitoring Kit'
+ }
+ var textArray = Array.from(text);
+ if (textArray.includes('Safety') || textArray.includes('Catheters')) {
+   return titles.catheter;
+ }
+ if (textArray.includes('Inner') || textArray.includes('Cuffless')) {
+   return titles.tracheostomy;
+ }
+ if (textArray.includes('TRANSPAC') || textArray.includes('MONITORING')) {
+   return titles.transpac;
+ }
+ return 'Unknown Item';
+}
+
 var Item = mongoose.model('Item', itemSchema);
 
 var caseSchema = new Schema({
