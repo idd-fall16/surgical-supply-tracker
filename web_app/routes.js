@@ -54,6 +54,31 @@ module.exports = function(app) {
     });
 
     /**
+     * Creates a dummy case
+     */
+    app.post('/api/dummy/cases/:caseID', function(req, res) {
+      fs.readFile('dummyCase.json', function(err, data) {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          var newCase = new models.Case({
+            case_number: req.params.case_number,
+            surgery_type: data.surgery_type,
+            surgeon: data.surgeon,
+            items: data.items
+          });
+          newCase.save(function(err) {
+            if (err) {
+              res.status(400).send('Error: could not save dummy case: ' + newCase + '\n error is: ' + err);
+            } else {
+              res.status(200).send('Successfully created dummy case: ' + newCase);
+            }
+          });
+        }
+      });
+    });
+
+    /**
      * Uploads a photo with to CASE_ID
      */
     app.post('/api/cases/:case_number/items/photo', upload.single('devicePicture'), function(req, res) {
