@@ -3,8 +3,11 @@
   var OnboardingView = Backbone.View.extend({
     // case view consists of two main compoenents: case table, and footer bar.
     el: $('#view_onboarding'),
+    new_session: $('#btn-new-session'),
+    old_session: $('#btn-old-session'),
     events: {
-      // 'click #btn_stop_scan': 'stopScanning'
+      'click #btn-new-session': 'newSession',
+      'click #btn-new-session': 'oldSession'
     },
     initialize: function(options){
       _.bindAll(this, 'render');
@@ -13,6 +16,12 @@
     render: function(){
       var scope = this;
     },
+    newSession: function(){
+      alert();
+    },
+    oldSession: function(){
+
+    }
 
 
   });

@@ -18,7 +18,15 @@
           "case_id" : "1",
           "item_name": "Tracheostomy Tube Cuffless",
           "donating": "0",
-          "total": "0",
+          "total": "40",
+          "cost": "12"
+        },
+        {
+          "_id" : "3",
+          "case_id" : "1",
+          "item_name": "Transpac IV Monitoring Kit",
+          "donating": "0",
+          "total": "20",
           "cost": "12"
         }
       ]
