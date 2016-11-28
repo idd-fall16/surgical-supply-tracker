@@ -61,6 +61,8 @@ module.exports = function(app) {
         if (err) {
           res.status(400).send(err);
         } else {
+          // Extract the single case
+          data = JSON.parse(data.toString()).cases[0];
           var newCase = new models.Case({
             case_number: req.params.case_number,
             surgery_type: data.surgery_type,
