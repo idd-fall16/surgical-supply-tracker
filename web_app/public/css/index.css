@@ -13,6 +13,10 @@
   src: url('fonts/Graphik-Semibold.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
+.strong {
+  font-family: 'Graphik-Medium';
+}
+
 
 body, h1, h2, h3, p {
   font-family: 'Graphik-Regular', sans-serif;
@@ -20,12 +24,13 @@ body, h1, h2, h3, p {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 48px;
+  font-family: 'Graphik-Regular';
 
 }
 
 h2 {
-  font-size: 18px;
+  font-size: 36px;
 }
 
 h3 {
@@ -41,6 +46,11 @@ p {
 
 .button {
   margin: 0rem;
+}
+
+#view_onboarding {
+  background-color: #193662;
+  color: #fff;
 }
 
 #preview img {
@@ -59,6 +69,22 @@ header {
   color: #fff;
 }
 
+.btn-session {
+  margin: 1rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid #C6D9E5;
+  background-color: #1F3960;
+  color: #fff;
+}
+
+.btn-session:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+
+
 #page_footer {
   background-color: #193662;
   color: #fff;
@@ -67,6 +93,10 @@ header {
 
 #btn_start_scan {
 
+}
+
+#view_onboarding #page_content {
+  padding-top:15rem;
 }
 
 #page_content {

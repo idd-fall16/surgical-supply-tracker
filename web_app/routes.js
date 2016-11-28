@@ -219,8 +219,4 @@ module.exports = function(app) {
      app.get('/onboarding', function (req, res) {
          res.sendFile(path.join(__dirname + '/public/onboarding.html'));
      });
-
-     app.get('*', function (req, res) {
-         res.send(req.params);
-     });
 }
