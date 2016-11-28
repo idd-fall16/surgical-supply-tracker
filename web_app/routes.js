@@ -69,11 +69,11 @@ module.exports = function(app) {
           } else {
             console.log("Successful parse.");
             //FIXME: how to choose best text?
-            var itemName = text[1] + text[2];
-            if (!itemName) {
+            if (!text) {
               res.status(400).json({ "error" : "No text found in photo. "});
               return;
             }
+            var itemName = text[1] + text[2];
 
             //FIXME: DRY this up okay
             // Create new item
