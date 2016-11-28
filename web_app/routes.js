@@ -69,19 +69,19 @@ module.exports = function(app) {
           } else {
             console.log("Successful parse.");
             //FIXME: how to choose best text?
-            var itemName = text[0];
-            if (!itemName) {
+            if (!text) {
               res.status(400).json({ "error" : "No text found in photo. "});
               return;
             }
+            var itemName = text[1] + ' ' + text[2];
 
             //FIXME: DRY this up okay
             // Create new item
             var newItem = new models.Item({
               item_number: 42,
               item_name: itemName,
-              donating: 0,
-              total: 0,
+              donating: 1,
+              total: 5,
               cost: 0
             });
             // Find case with corresponding case number
@@ -92,7 +92,7 @@ module.exports = function(app) {
               } else if (!matchingCase) {
                 res.status(404).json({ "error" : "No matching case found."});
               } else {
-                matchingCase.items.push(newItem);
+                matchingCase.addItem(newItem);
                 matchingCase.save(function(err) {
                   if (err) {
                     res.status(400).send('Error: could not save new item');
@@ -130,7 +130,7 @@ module.exports = function(app) {
           } else if (!matchingCase) {
             res.status(404).json({ "error" : "No matching case found."});
           } else {
-            matchingCase.items.push(newItem);
+            matchingCase.addItem(newItem);
             matchingCase.save(function(err) {
               if (err) {
                 res.status(400).send('Error: could not save new item');

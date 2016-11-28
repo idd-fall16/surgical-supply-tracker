@@ -29,9 +29,21 @@ var caseSchema = new Schema({
   items: [itemSchema]
 });
 
-var Case = mongoose.model('Case', caseSchema);
+// Increment the item count, or create the new item in the list if it doesn't
+// already exist
+caseSchema.methods.addItem = function(newItem) {
+  var existingItem;
+  for (var i = 0; i < this.items.length; i++) {
+    existingItem = this.items[i];
+    if (newItem.item_name == existingItem.item_name) {
+      existingItem.donating += 1;
+      return;
+    }
+  }
+  this.items.push(newItem);
+}
 
-//TODO: write all our nifty methods here!
+var Case = mongoose.model('Case', caseSchema);
 
 // Export
 module.exports = {}
