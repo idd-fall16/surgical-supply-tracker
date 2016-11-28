@@ -8,6 +8,7 @@
         {
           "_id" : "1",
           "case_id" : "1",
+          "item_numer" : "4000",
           "item_name" : "Safety IV Catheters",
           "donating": "0",
           "total": "30",
@@ -16,6 +17,7 @@
         {
           "_id" : "2",
           "case_id" : "1",
+          "item_numer" : "4001",
           "item_name": "Tracheostomy Tube Cuffless",
           "donating": "0",
           "total": "40",
@@ -24,6 +26,7 @@
         {
           "_id" : "3",
           "case_id" : "1",
+          "item_numer" : "4002",
           "item_name": "Transpac IV Monitoring Kit",
           "donating": "0",
           "total": "20",
