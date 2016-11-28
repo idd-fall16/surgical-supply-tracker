@@ -180,6 +180,20 @@ module.exports = function(app) {
     });
 
     /**
+     * Returns a list of DUMMY cases.
+     */
+    app.get('/api/dummy2/cases/', function(req, res) {
+      fs.readFile('dummyCase.json', function(err, data) {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          var json = JSON.parse(data.toString());
+          res.status(200).json(json);
+        }
+      });
+    });
+
+    /**
      * Returns info for a case with case_number.
      */
     app.get('/api/cases/:case_number', function(req, res) {
