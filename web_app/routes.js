@@ -73,7 +73,7 @@ module.exports = function(app) {
               res.status(400).json({ "error" : "No text found in photo. "});
               return;
             }
-            var itemName = text[1] + text[2];
+            var itemName = text[1] + ' ' + text[2];
 
             //FIXME: DRY this up okay
             // Create new item
