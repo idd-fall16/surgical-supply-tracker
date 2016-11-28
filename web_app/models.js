@@ -24,7 +24,7 @@ var itemSchema = new Schema({
 // Classify the item and return a standardized title
 // Returns: String which is the standardized title
 // FIXME: use actual mapping to do this
-itemSchema.methods.classifyItem = function (textArray) {
+itemSchema.statics.classifyItem = function (textArray) {
  var titles = {
    catheter : 'Safety IV Catheters',
    tracheostomy : 'Tracheostomy Tube Cuffless',
