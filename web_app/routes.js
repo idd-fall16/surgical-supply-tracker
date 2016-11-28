@@ -56,7 +56,7 @@ module.exports = function(app) {
     /**
      * Creates a dummy case
      */
-    app.post('/api/dummy/cases/:caseID', function(req, res) {
+    app.post('/api/dummy/cases/:case_number', function(req, res) {
       fs.readFile('dummyCase.json', function(err, data) {
         if (err) {
           res.status(400).send(err);
