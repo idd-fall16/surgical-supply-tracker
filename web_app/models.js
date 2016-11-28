@@ -30,13 +30,13 @@ itemSchema.statics.classifyItem = function (textArray) {
    tracheostomy : 'Tracheostomy Tube Cuffless',
    transpac : 'Transpac IV Monitoring Kit'
  }
- if (textArray.contains('Safety') || textArray.contains('Catheters')) {
+ if (textArray.includes('Safety') || textArray.includes('Catheters')) {
    return titles.catheter;
  }
- if (textArray.contains('Inner') || textArray.contains('Cuffless')) {
+ if (textArray.includes('Inner') || textArray.includes('Cuffless')) {
    return titles.tracheostomy;
  }
- if (textArray.contains('TRANSPAC') || textArray.contains('MONITORING')) {
+ if (textArray.includes('TRANSPAC') || textArray.includes('MONITORING')) {
    return titles.transpac;
  }
  return 'Unknown Item';
