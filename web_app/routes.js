@@ -80,8 +80,8 @@ module.exports = function(app) {
             var newItem = new models.Item({
               item_number: 42,
               item_name: itemName,
-              donating: 0,
-              total: 0,
+              donating: 1,
+              total: 1,
               cost: 0
             });
             // Find case with corresponding case number
