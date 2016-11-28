@@ -36,7 +36,7 @@ caseSchema.methods.addItem = function(newItem) {
   for (var i = 0; i < this.items.length; i++) {
     existingItem = this.items[i];
     if (newItem.item_name == existingItem.item_name) {
-      existingItem.total += 1;
+      existingItem.donating += 1;
       return;
     }
   }
