@@ -81,7 +81,7 @@ module.exports = function(app) {
               item_number: 42,
               item_name: itemName,
               donating: 1,
-              total: 1,
+              total: 5,
               cost: 0
             });
             // Find case with corresponding case number
