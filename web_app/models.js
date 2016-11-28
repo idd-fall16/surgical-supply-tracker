@@ -24,12 +24,13 @@ var itemSchema = new Schema({
 // Classify the item and return a standardized title
 // Returns: String which is the standardized title
 // FIXME: use actual mapping to do this
-itemSchema.statics.classifyItem = function (textArray) {
+itemSchema.statics.classifyItem = function(text) {
  var titles = {
    catheter : 'Safety IV Catheters',
    tracheostomy : 'Tracheostomy Tube Cuffless',
    transpac : 'Transpac IV Monitoring Kit'
  }
+ var textArray = Array.from(text);
  if (textArray.includes('Safety') || textArray.includes('Catheters')) {
    return titles.catheter;
  }
