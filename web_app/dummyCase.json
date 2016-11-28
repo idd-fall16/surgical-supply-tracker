@@ -6,7 +6,6 @@
       "surgeon" : "Jessica Changsta, MD",
       "items" : [
         {
-          "_id" : "1",
           "case_id" : "1",
           "item_number" : "4000",
           "item_name" : "Safety IV Catheters",
@@ -15,7 +14,6 @@
           "cost": "12"
         },
         {
-          "_id" : "2",
           "case_id" : "1",
           "item_number" : "4001",
           "item_name": "Tracheostomy Tube Cuffless",
@@ -24,7 +22,6 @@
           "cost": "12"
         },
         {
-          "_id" : "3",
           "case_id" : "1",
           "item_number" : "4002",
           "item_name": "Transpac IV Monitoring Kit",
