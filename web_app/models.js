@@ -32,13 +32,19 @@ itemSchema.statics.classifyItem = function(text) {
    transpac : 'Transpac IV Monitoring Kit'
  }
  var textArray = Array.from(text);
+ console.log('Classifying off of: ' + textArray);
  if (textArray.includes('Safety') || textArray.includes('Catheters')) {
+   console.log ('Classified: ' + titles.catheter);
    return titles.catheter;
  }
- if (textArray.includes('Inner') || textArray.includes('Cuffless')) {
+ if (textArray.includes('Inner') || textArray.includes('Cuffless')
+     || textArray.includes('Shiley') || textArray.includes('Cannula')
+     || textArray.includes('4DCFS')) {
+   console.log ('Classified: ' + titles.tracheostomy);
    return titles.tracheostomy;
  }
  if (textArray.includes('TRANSPAC') || textArray.includes('MONITORING')) {
+   console.log ('Classified: ' + titles.transpac);
    return titles.transpac;
  }
  return 'Unknown Item';
