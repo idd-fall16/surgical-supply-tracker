@@ -257,6 +257,10 @@ module.exports = function(app) {
          res.sendFile(path.join(__dirname + '/public/case.html'));
      });
 
+     app.get('/cases/:caseID/analytics', function (req, res) {
+         res.sendFile(path.join(__dirname + '/public/analytics.html'));
+     });
+
      app.get('/onboarding', function (req, res) {
          res.sendFile(path.join(__dirname + '/public/onboarding.html'));
      });
