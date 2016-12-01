@@ -9,9 +9,6 @@ var test;
     parse: function(data) {
       console.log("Parsed data.items: " + data.items);
       return data.items;
-    },
-    getDonatedCounts: function(data) {
-
     }
   });
 
