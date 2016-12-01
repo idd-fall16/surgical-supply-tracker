@@ -19,17 +19,16 @@ var test;
     initialize: function(options) {
       var scope = this;
       this.collection = options.collection;
-      test = this.collection;
 
       this.listenTo(this.collection, 'add', function() {console.log('change'); this.render()});
       scope.collection.fetch();
     },
     render: function() {
-
+      this.renderItemUsageChart();
     },
     getCounts: function(fieldName) {
       if (fieldName != 'donating' && fieldName != 'total'
-          && fieldName != 'cost') {
+          && fieldName != 'cost' && fieldName != 'item_name') {
             console.log('Invalid field name');
             return null;
       }
@@ -40,6 +39,48 @@ var test;
       });
       return arr;
     },
+    renderItemUsageChart : function() {
+      var prefCardCounts = this.getCounts('total');
+      prefCardCounts = ['On Preference Card'].concat(prefCardCounts);
+
+      var donatedCounts = this.getCounts('donating');
+      donatedCounts = ['Donating'].concat(donatedCounts);
+
+      var itemNames = this.getCounts('item_name');
+      itemNames = ['x'].concat(itemNames);
+
+      var itemUsage = c3.generate({
+          bindto: '.item-usage',
+          data: {
+            x: 'x',
+            columns: [
+              itemNames,
+              prefCardCounts,
+              donatedCounts
+            ],
+            type: 'bar',
+            groups: [
+              ['On Preference Card', 'Donating']
+            ]
+          },
+          axis: {
+            y: {
+              label: {
+                text: 'Number of Items',
+                position: 'outer-middle'
+              }
+            },
+            x: {
+              type: 'category',
+              label: {
+                text: 'Supply Type',
+                position: 'middle'
+              }
+            }
+          }
+      });
+    },
+    initCostOverTimeChart : function() {}
   });
 
   var ListView = Backbone.View.extend({
@@ -47,35 +88,6 @@ var test;
   });
 
   var chartView = new ChartView({ collection: new Case() });
-  test = chartView;
-
-  var itemUsage = c3.generate({
-      bindto: '.item-usage',
-      data: {
-        columns: [
-          ['On Preference Card', 30, 50, 10],
-          ['Donated', 20, 10, 2]
-        ],
-        type: 'bar',
-        groups: [
-          ['On Preference Card', 'Donated']
-        ]
-      },
-      axis: {
-        y: {
-          label: {
-            text: 'Number of Items',
-            position: 'outer-middle'
-          }
-        },
-        x: {
-          label: {
-            text: 'Supply Type',
-            position: 'middle'
-          }
-        }
-      }
-  });
 
   var costOverTime = c3.generate({
       bindto: '.cost-over-time',
