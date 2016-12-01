@@ -14,6 +14,7 @@ var test;
 
   var ChartView = Backbone.View.extend({
     cost_el: $('.total-cost'),
+    cost: 0,
     initialize: function(options) {
       var scope = this;
       this.collection = options.collection;
@@ -23,10 +24,11 @@ var test;
     },
     render: function() {
       var scope = this;
+
+      scope.cost = scope.getTotalCost();
+      scope.cost_el.text('$' + scope.cost);
       scope.renderItemUsageChart();
-      
-      var cost = scope.getTotalCost();
-      scope.cost_el.text('$' + cost);
+      scope.renderCostOverTimeChart();
     },
     getCounts: function(fieldName) {
       if (fieldName != 'donating' && fieldName != 'total'
@@ -92,7 +94,30 @@ var test;
           }
       });
     },
-    initCostOverTimeChart : function() {}
+    renderCostOverTimeChart : function() {
+      var costOverTime = c3.generate({
+          bindto: '.cost-over-time',
+          data: {
+            columns: [
+              ['Cost', 1000, 900, 234, 890, 740, 600, this.cost],
+            ],
+          },
+          axis: {
+            y: {
+              label: {
+                text: 'Dollars',
+                position: 'outer-middle'
+              }
+            },
+            x: {
+              label: {
+                text: 'Date',
+                position: 'outer-middle'
+              }
+            }
+          }
+      });
+    }
   });
 
   var ListView = Backbone.View.extend({
@@ -100,27 +125,4 @@ var test;
   });
 
   var chartView = new ChartView({ collection: new Case() });
-
-  var costOverTime = c3.generate({
-      bindto: '.cost-over-time',
-      data: {
-        columns: [
-          ['Cost', 1000, 900, 234, 890, 740, 600, 761],
-        ],
-      },
-      axis: {
-        y: {
-          label: {
-            text: 'Dollars',
-            position: 'outer-middle'
-          }
-        },
-        x: {
-          label: {
-            text: 'Date',
-            position: 'outer-middle'
-          }
-        }
-      }
-  });
 })(jQuery);
