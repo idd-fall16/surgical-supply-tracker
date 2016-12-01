@@ -13,6 +13,7 @@ var test;
   });
 
   var ChartView = Backbone.View.extend({
+    cost_el: $('.total-cost'),
     initialize: function(options) {
       var scope = this;
       this.collection = options.collection;
@@ -21,7 +22,11 @@ var test;
       scope.collection.fetch();
     },
     render: function() {
-      this.renderItemUsageChart();
+      var scope = this;
+      scope.renderItemUsageChart();
+      
+      var cost = scope.getTotalCost();
+      scope.cost_el.text('$' + cost);
     },
     getCounts: function(fieldName) {
       if (fieldName != 'donating' && fieldName != 'total'
@@ -35,6 +40,16 @@ var test;
         arr.push(item[fieldName]);
       });
       return arr;
+    },
+    getTotalCost: function() {
+      var total = 0;
+      this.collection.each(function(model) {
+        var item = model.attributes;
+        var cost = item.cost;
+        var donating = item.donating;
+        total += cost * donating;
+      });
+      return total;
     },
     renderItemUsageChart : function() {
       var prefCardCounts = this.getCounts('total');
