@@ -56,6 +56,7 @@ var caseSchema = new Schema({
   case_number: { type: Number, index: true, unique: true },
   surgery_type: String,
   surgeon: String,
+  date: Date,
   items: [itemSchema]
 });
 
@@ -71,6 +72,10 @@ caseSchema.methods.addItem = function(newItem) {
     }
   }
   this.items.push(newItem);
+}
+
+caseSchema.statics.seedCases = function() {
+
 }
 
 var Case = mongoose.model('Case', caseSchema);
