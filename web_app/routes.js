@@ -187,7 +187,7 @@ module.exports = function(app) {
         if (err) {
           res.status(400).send(err);
         } else {
-          res.status(200).json(cases);
+          res.status(200).json({ "cases" : cases });
         }
       });
     });
