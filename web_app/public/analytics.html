@@ -1,0 +1,67 @@
+<html>
+    <head>
+      <title>Analytics</title>
+      <link rel="stylesheet" href="/css/foundation.css">
+      <link rel="stylesheet" type="text/css" href="/css/index.css">
+    </head>
+    <body id="view_case">
+      <h1>Analytics</h1>
+      <h2>Switch Will Go Here</h2>
+      <h2>Item Usage</h2>
+      <div class="item-usage"></div>
+      <h2>Cost Over Time</h2>
+      <div class="cost-over-time"></div>
+      <h2>Total Cost</h2>
+      <h3 class="total-cost">$761</h3>
+      <h2>Complete List</h2>
+      <table class="small-12 columns">
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Donating</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="page_content_table">
+          <tr>
+            <td>Gauze</td>
+            <td>2</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>TRANSPAC</td>
+            <td>1</td>
+            <td>3</td>
+          </tr>
+          <!-- <script type="text/template" id="page_content_table_template">
+            <tr>
+              <td><%= item_name %></td>
+              <td><%= donating %></td>
+              <td><%= total %></td>
+            </tr>
+          </script> -->
+        </tbody>
+      </table>
+
+
+      <!-- Load c3.css -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css" rel="stylesheet" type="text/css">
+
+      <!-- Load d3.js and c3.js -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js" charset="utf-8"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+
+      <!-- Load frontend dependencies -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script src="http://underscorejs.org/underscore-min.js"></script>
+      <script src="http://backbonejs.org/backbone-min.js"></script>
+
+      <script src="/analytics.js"></script>
+      <script src="/js/router.js"></script>
+
+
+
+
+    </body>
+
+</html>

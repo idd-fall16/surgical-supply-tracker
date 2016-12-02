@@ -253,11 +253,28 @@ module.exports = function(app) {
     /**
      * Home page
      */
+    //  app.get('/cases/:caseID', function (req, res) {
+    //      res.sendFile(path.join(__dirname + '/public/cases.html'));
+    //  });
+
      app.get('/cases/:caseID', function (req, res) {
          res.sendFile(path.join(__dirname + '/public/case.html'));
      });
 
-     app.get('/onboarding', function (req, res) {
-         res.sendFile(path.join(__dirname + '/public/onboarding.html'));
+    //  app.get('/onboarding', function (req, res) {
+    //      res.sendFile(path.join(__dirname + '/public/onboarding.html'));
+    //  });
+
+    //*****each html should include router.js as the last script.*****
+    app.get('/onboarding', function(req, res) {
+      res.sendFile(path.join(__dirname + '/public/onboarding.html'));
+    });
+
+    app.get('/', function(req, res) {
+      res.sendFile(path.join(__dirname + '/public/onboarding.html'));
+    });
+
+     app.get('/cases/:caseID/analytics', function (req, res) {
+         res.sendFile(path.join(__dirname + '/public/analytics.html'));
      });
 }
