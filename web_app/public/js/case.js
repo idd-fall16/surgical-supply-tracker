@@ -1,5 +1,3 @@
-(function($){
-
   var Case = Backbone.Collection.extend({
     url: '/api' + window.location.pathname,
     parse: function(data) {
@@ -44,5 +42,4 @@
       console.log("scanning stopped.");
     }
   });
-  var caseView = new CaseView({ collection: new Case() });
-})(jQuery);
+  
