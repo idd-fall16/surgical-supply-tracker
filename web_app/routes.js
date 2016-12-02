@@ -277,4 +277,8 @@ module.exports = function(app) {
      app.get('/cases/:caseID/analytics', function (req, res) {
          res.sendFile(path.join(__dirname + '/public/analytics.html'));
      });
+
+     app.get('/cases', function (req, res) {
+         res.sendFile(path.join(__dirname + '/public/cases.html'));
+     });
 }

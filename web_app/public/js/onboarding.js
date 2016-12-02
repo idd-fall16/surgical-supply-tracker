@@ -20,6 +20,7 @@ var OnboardingView = Backbone.View.extend({
     },
     oldSession: function(){
       console.log("old onboarding session");
+      alert();
     }
 
 
