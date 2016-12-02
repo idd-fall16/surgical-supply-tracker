@@ -4,7 +4,8 @@
 var App = Backbone.Router.extend({
   routes: {
     "onboarding" : "onboarding",
-    "cases/:caseID" : "case"
+    "cases/:caseID" : "case",
+    "cases/:caseID/analytics" : "analytics"
   },
   initialize: function(){
     console.log('initialize');
@@ -15,6 +16,10 @@ var App = Backbone.Router.extend({
   },
   case: function(id){
     this.caseView = new CaseView({ collection: new Case() });
+  },
+  analytics: function(){
+    alert();
+    this.analyticsView = new AnalyticsView({ collection: new Case() });
   }
 });
 

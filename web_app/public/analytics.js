@@ -1,7 +1,5 @@
 var test;
 
-(function ($) {
-
   var Case = Backbone.Collection.extend({
     url: '/api' + window.location.pathname.replace('/analytics', ''),
     // Specially named function that returns only the case object's item list
@@ -12,7 +10,7 @@ var test;
     }
   });
 
-  var ChartView = Backbone.View.extend({
+  var AnalyticsView = Backbone.View.extend({
     cost_el: $('.total-cost'),
     cost: 0,
     initialize: function(options) {
@@ -119,10 +117,3 @@ var test;
       });
     }
   });
-
-  var ListView = Backbone.View.extend({
-
-  });
-
-  var chartView = new ChartView({ collection: new Case() });
-})(jQuery);

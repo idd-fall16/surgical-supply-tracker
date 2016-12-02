@@ -265,7 +265,7 @@ module.exports = function(app) {
     //      res.sendFile(path.join(__dirname + '/public/onboarding.html'));
     //  });
 
-    //
+    //*****each html should include router.js as the last script.*****
     app.get('/onboarding', function(req, res) {
       res.sendFile(path.join(__dirname + '/public/onboarding.html'));
     });
