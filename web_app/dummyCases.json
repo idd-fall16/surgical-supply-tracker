@@ -1,12 +1,12 @@
 {
   "cases" : [
     {
-      "_id" : "1",
+      "case_number" : "1",
       "surgery_type" : "Cranial Something",
       "surgeon" : "Jessica Changsta, MD",
+      "date" : "2013-04-04T19:31:38.514Z",
       "items" : [
         {
-          "_id" : "1",
           "case_id" : "1",
           "item_name" : "Raytex Sponge Gauze",
           "donating": "0",
@@ -14,7 +14,6 @@
           "cost": "12"
         },
         {
-          "_id" : "2",
           "case_id" : "1",
           "item_name": "1/2 x 1/2 Sponge",
           "donating": "0",
@@ -24,12 +23,12 @@
       ]
     },
     {
-      "_id" : "2",
+      "case_number" : "2",
       "surgery_type" : "Bubonic Plague Fix",
       "surgeon" : "Payton Goodrich, MD",
+      "date" : "2013-04-04T19:31:38.514Z",
       "items" : [
         {
-          "_id" : "10",
           "case_id" : "2",
           "item_name" : "Raytex Sponge Gauze",
           "donating": "0",
@@ -37,7 +36,6 @@
           "cost": "12"
         },
         {
-          "_id" : "20",
           "case_id" : "2",
           "item_name": "1/2 x 1/2 Sponge",
           "donating": "0",
@@ -47,12 +45,12 @@
       ]
     },
     {
-      "_id" : "3",
+      "case_number" : "3",
       "surgery_type" : "Burn Excision",
       "surgeon" : "Isabel Yang, MD",
+      "date" : "2013-04-04T19:31:38.514Z",
       "items" : [
         {
-          "_id" : "100",
           "case_id" : "3",
           "item_name" : "Raytex Sponge Gauze",
           "donating": "0",
@@ -60,7 +58,6 @@
           "cost": "12"
         },
         {
-          "_id" : "200",
           "case_id" : "3",
           "item_name": "1/2 x 1/2 Sponge",
           "donating": "0",

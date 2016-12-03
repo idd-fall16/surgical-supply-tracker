@@ -56,6 +56,7 @@ var caseSchema = new Schema({
   case_number: { type: Number, index: true, unique: true },
   surgery_type: String,
   surgeon: String,
+  date: Date,
   items: [itemSchema]
 });
 
