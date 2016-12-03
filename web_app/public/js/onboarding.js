@@ -22,7 +22,7 @@ var OnboardingView = Backbone.View.extend({
           url:"send_photo",
           type: "get",
           success: function(res){
-            console.log(res);
+            console.log("success", res);
           }
         }).done(function(o){
           //do something
