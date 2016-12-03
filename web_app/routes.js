@@ -277,9 +277,14 @@ module.exports = function(app) {
 
     app.get('/send_photo', function(req, res) {
       // res.sendFile(path.join(__dirname + '/public/send_photo.py'));
-      pythonShell.run('/public/test.py', function (err, results) {
-        console.log("errpr", err);
-        console.log("results", results);
+      pythonShell.run('/public/send_photo.py', function (err, results) {
+        if (err) {
+          console.log("errpr", err);
+          res.status(400).err(err);
+        } else {
+          console.log("results", results);
+          res.status(200).send(results);
+        }
       });
     });
 
