@@ -1,5 +1,6 @@
 var path = require('path');
 var fs = require('fs');
+var pythonShell = require('python-shell')
 
 // Import models for DB
 var models = require('./models.js');
@@ -275,7 +276,10 @@ module.exports = function(app) {
     });
 
     app.get('/send_photo', function(req, res) {
-      res.sendFile(path.join(__dirname + '/public/send_photo.py'));
+      // res.sendFile(path.join(__dirname + '/public/send_photo.py'));
+      pythonShell.run('/public/send_photo.py', function (err, results) {
+        console.log(err);
+      });
     });
 
      app.get('/cases/:caseID/analytics', function (req, res) {

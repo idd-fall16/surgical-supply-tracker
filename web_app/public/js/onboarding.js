@@ -9,7 +9,7 @@ var OnboardingView = Backbone.View.extend({
     },
     initialize: function(options){
       _.bindAll(this, 'render');
-      new_session.onclick = 'send_photo()'
+      this.new_session.onclick = 'capture_image()'
       var scope = this;
       console.log("initialize onboarding view")
     },
@@ -19,12 +19,14 @@ var OnboardingView = Backbone.View.extend({
     newSession: function(){
       console.log("new onboarding session");
       $.ajax({
-          url:"send_photo.py",
+          url:"send_photo",
+          type: "get",
           success: function(res){
             console.log(res);
           }
         }).done(function(o){
           //do something
+          console.log("done", o);
         });
 
     },
