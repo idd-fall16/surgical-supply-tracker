@@ -1,0 +1,31 @@
+{
+  "surgeon" : [
+    "Jonathan Bresenham MD",
+    "James Burke MD, PhD",
+    "Andrew Tran MD",
+    "Jenniger Lasker MD, PhD",
+    "Daniel Lau MD",
+    "Young Lam MD",
+    "Corinna Georgiou MD",
+    "Michaela Sufid MD",
+    "Stephanie McGill MD, PhD",
+    "Ethan Rutledge MD"
+  ],
+  "surgery_type" : [
+    "Craniectomy",
+    "External Venticular Drain (EVD)",
+    "Endoscopic Third Ventriculostomy (ETV)",
+    "Intrathecal Baclofen Pump",
+    "Spinal Fusion",
+    "Ventriculo-Peritoneal Shunt"
+  ],
+  "items_with_cost" : {
+    "Safety IV Catheters - Radiopaque (Jelco)" : "2.70",
+    "Dermacea USP Type VII Gauze (Covidien)" : "3.99",
+    "IV Secondary Set" : "5.00",
+    "0.9% Sodium Chloride Injection USP" : "10.95",
+    "Swan-Ganz (Edwards Lifesciences)" : "1500",
+    "Shiley Tracheostomy Tube Cuffles with Disposable Inner Cannula (Covidian)" : "75.21",
+    "Transpac IV Monitoring Kit (ICU Medical)" : "21.00"
+  }
+}
