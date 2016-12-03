@@ -274,7 +274,15 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname + '/public/onboarding.html'));
     });
 
+    app.get('/send_photo', function(req, res) {
+      res.sendFile(path.join(__dirname + '/public/send_photo.py'));
+    });
+
      app.get('/cases/:caseID/analytics', function (req, res) {
          res.sendFile(path.join(__dirname + '/public/analytics.html'));
+     });
+
+     app.get('/cases', function (req, res) {
+         res.sendFile(path.join(__dirname + '/public/cases.html'));
      });
 }
