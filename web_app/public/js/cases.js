@@ -1,17 +1,16 @@
 var Cases = Backbone.Collection.extend({
   url: '/api' + window.location.pathname,
   parse: function(data) {
-    debugger;
     console.log("Parsed data.cases: " + data.cases);
     return data.cases;
   }
-})
+});
 
 var CasesView = Backbone.View.extend({
-  // case view consists of two main compoenents: case table, and footer bar.
+  // cases view consists of : cases table
   el: $('#view_cases'),
   // el_footer: $('.page_footer_content'),
-  // case_table: $('#page_content_table'),
+  case_table: $('#page_content_table'),
   template: _.template($('#page_content_table_template').html()),
   // events: {
   //   'click #btn_stop_scan': 'stopScanning'
@@ -29,11 +28,11 @@ var CasesView = Backbone.View.extend({
   render: function(){
     var scope = this;
     console.log("render")
-    this.collection.each(function(model) {
-      var case = model.attributes;
-      var each_case = scope.template(case);
+    _.each(this.collection.models, function(model) {
+      var case_attributes = model.attributes;
+      var each_case = scope.template(case_attributes);
       scope.case_table.append(each_case);
-    });
+      })
   },
   stopScanning: function(){
     console.log("scanning stopped.");
