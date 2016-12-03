@@ -13,8 +13,6 @@ db.once('open', function() {
 var Schema = mongoose.Schema;
 
 var itemSchema = new Schema({
-  item_number: Number,
-  case_id: Number,
   item_name: String,
   donating: Number,
   total: Number,
