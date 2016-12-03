@@ -13,8 +13,6 @@ db.once('open', function() {
 var Schema = mongoose.Schema;
 
 var itemSchema = new Schema({
-  item_number: Number,
-  case_id: Number,
   item_name: String,
   donating: Number,
   total: Number,
@@ -56,7 +54,7 @@ var caseSchema = new Schema({
   case_number: { type: Number, index: true, unique: true },
   surgery_type: String,
   surgeon: String,
-  date: Date,
+  date: { "type": Date, "default": Date.now },
   items: [itemSchema]
 });
 
