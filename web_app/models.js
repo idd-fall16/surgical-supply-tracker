@@ -74,10 +74,6 @@ caseSchema.methods.addItem = function(newItem) {
   this.items.push(newItem);
 }
 
-caseSchema.statics.seedCases = function() {
-
-}
-
 var Case = mongoose.model('Case', caseSchema);
 
 // Export
