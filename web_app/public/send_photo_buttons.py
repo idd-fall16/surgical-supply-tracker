@@ -8,7 +8,7 @@ from Tkinter import *
 #PiCam Setup
 camera = PiCamera()
 image_path = '/home/pi/Desktop/image.jpg'
-camera.start_preview(fullscreen=False, window = (100, 20, 160, 120))
+camera.start_preview(fullscreen=False, window = (560, 75, 240, 180))
 
 #Capture Image
 def capture_image():
@@ -36,8 +36,8 @@ b1 = Button(f, text="Capture Image")
 b2 = Button(f,text="Stop Camera")
 b1.pack(side=LEFT, padx =5)
 b2.pack(side=LEFT, padx =5)
-l = Label(win, text="Select an options below")
-l.pack(side=TOP)
+#l = Label(win, text="Select an options below")
+#l.pack(side=TOP)
 f.pack()
 
 #Button Commands
