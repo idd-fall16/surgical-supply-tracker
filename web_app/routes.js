@@ -170,6 +170,21 @@ module.exports = function(app) {
       }
     });
 
+    app.put('/api/cases/costs', function(req, res) {
+      var surgeon = req.body.surgeon;
+      if (!surgeon) {
+        res.status(500).send('No surgeon specified.');
+      } else {
+        models.Case.find({ surgeon: surgeon }, function(err, cases) {
+          if (err) {
+            console.log(err);
+          } else {
+            res.status(200).send(cases);
+          }
+        });
+      }
+    });
+
     // Frontend Routes ===============
     /**
      * Displays all photos taken ever
@@ -219,6 +234,20 @@ module.exports = function(app) {
         }
       });
     });
+
+    /**
+     * Returns a JSON containing possible surgeon, surgery type, and item values.
+     */
+     app.get('/api/case_values', function(req, res) {
+       fs.readFile('caseTypes.json', function(err, data) {
+         if (err) {
+           res.status(400).send(err);
+         } else {
+           var json = JSON.parse(data.toString());
+           res.status(200).json(json);
+         }
+       });
+     });
 
     /**
      * Returns info for a case with case_number.
