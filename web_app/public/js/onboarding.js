@@ -3,35 +3,67 @@ var OnboardingView = Backbone.View.extend({
     el: $('#view_onboarding'),
     new_session: $('#btn-new-session'),
     old_session: $('#btn-old-session'),
+    btn_to_surgeon: $('#btn_to_surgeon'),
+    btn_to_session: $('#btn_to_session'),
+    pg_main: $('#page_content_main'),
+    pg_surgery: $('#page_content_surgery'),
+    pg_surgeon: $('#page_content_surgeon'),
     events: {
       'click #btn-new-session': 'newSession',
       'click #btn-old-session': 'oldSession',
+      'click #btn_to_surgeon': 'toSurgeon',
+      'click #btn_to_session': 'toSession'
     },
     initialize: function(options){
       _.bindAll(this, 'render');
-      new_session.onclick = 'send_photo()'
       var scope = this;
       console.log("initialize onboarding view")
+      $(this.el).find(this.pg_surgery).hide();
+      $(this.el).find(this.pg_surgeon).hide();
     },
     render: function(){
       var scope = this;
+
+      renderSurgery();
+      renderSurgeon();
     },
     newSession: function(){
       console.log("new onboarding session");
-      $.ajax({
-          url:"send_photo.py",
-          success: function(res){
-            console.log(res);
-          }
-        }).done(function(o){
-          //do something
-        });
-
+      $(this.el).find(this.pg_main).hide();
+      $(this.el).find(this.pg_surgery).show();
     },
     oldSession: function(){
       console.log("old onboarding session");
-      alert();
+      // alert();
+      window.location.href = '/cases'
+    },
+    toSurgeon: function(){
+      $(this.el).find(this.pg_main).hide();
+      $(this.el).find(this.pg_surgery).hide();
+      $(this.el).find(this.pg_surgeon).show();
+    },
+    toSession: function(){
+      $.ajax({
+          url:"send_photo_buttons",
+          type: "get",
+          success: function(res){
+            console.log("success", res);
+          }
+        }).done(function(o){
+          //do something
+          console.log("done", o);
+        });
+
+        window.location.href = '/cases/1' //change to correct id
+
+    },
+    renderSurgery: function(){
+      //render from json here
+    },
+    renderSurgeon: function(){
+
     }
+
 
 
   });

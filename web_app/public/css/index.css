@@ -48,6 +48,7 @@ p {
   margin: 0rem;
 }
 
+
 #view_onboarding {
   background-color: #193662;
   color: #fff;
@@ -95,11 +96,15 @@ header {
 
 }
 
-#view_onboarding #page_content {
-  padding-top:15rem;
+#view_onboarding #page_content_main, #view_onboarding #page_content_surgery, #view_onboarding #page_content_surgeon {
+  padding-top:15%;
 }
 
 #page_content {
+  padding: 0rem 4rem;
+}
+
+#page_content_main, #page_content_surgery, #page_content_surgeon {
   padding: 0rem 4rem;
 }
 

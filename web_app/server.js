@@ -5,6 +5,7 @@ var mongoose       = require('mongoose');
 var bodyParser     = require('body-parser');
 var fs             = require('fs');
 var assert         = require('assert');
+var pythonShell    = require('python-shell');
 //var methodOverride = require('method-override');
 
 // configuration ===========================================

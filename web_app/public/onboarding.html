@@ -14,7 +14,7 @@
           </div>
         </header> -->
 
-        <section id="page_content">
+        <section id="page_content_main">
           <div class="row">
             <div class="small-5 small-offset-3 columns">
               <!--  replace with js render -->
@@ -28,11 +28,38 @@
               <div id="btn-new-session" class="small-5 columns btn-session">
                   <h2>New session</h2>
 
+
               </div>
               <div id="btn-old-session" class="small-5 columns end btn-session">
                   <h2>Old session</h2>
               </div>
             </div>
+          </div>
+
+        </section>
+
+        <section id="page_content_surgery">
+          <div class="row">
+            <div class="small-5 small-offset-3 columns">
+              <!--  replace with js render -->
+              <h2>What is the type of surgery?</h2>
+              <select>
+                <option value = "Sup">Sup</option>
+              </select>
+              <button id='btn_to_surgeon' href='#' class='button'>Next</button>
+            </div>
+
+          </div>
+        </section>
+
+        <section id="page_content_surgeon">
+          <div class="row">
+            <div class="small-5 small-offset-3 columns">
+              <!--  replace with js render -->
+              <h2>Who is the surgeon?</h2>
+              <button id='btn_to_session' href='#' class='button'>Create Case</button>
+            </div>
+
           </div>
 
         </section>
@@ -51,8 +78,13 @@
       <script src="http://underscorejs.org/underscore-min.js"></script>
       <script src="http://backbonejs.org/backbone-min.js"></script>
       <!-- <script type="text/javascript" src="/js/case.js"></script> -->
+      <script type="text/javascript" src="/js/foundation.js"></script>
       <script type="text/javascript" src="/js/onboarding.js"></script>
+      <script type="text/javascript" src="/js/case.js"></script>
       <script type="text/javascript" src="/js/router.js"></script>
+      <script>
+        $(document).foundation('dropdown');
+      </script>
 
 
 
