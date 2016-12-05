@@ -25,16 +25,7 @@ var OnboardingView = Backbone.View.extend({
     },
     newSession: function(){
       console.log("new onboarding session");
-      // $.ajax({
-      //     url:"send_photo",
-      //     type: "get",
-      //     success: function(res){
-      //       console.log("success", res);
-      //     }
-      //   }).done(function(o){
-      //     //do something
-      //     console.log("done", o);
-      //   });
+
 
       $(this.el).find(this.pg_main).hide();
       $(this.el).find(this.pg_surgery).show();
@@ -50,6 +41,16 @@ var OnboardingView = Backbone.View.extend({
       $(this.el).find(this.pg_main).hide();
       $(this.el).find(this.pg_surgery).hide();
       $(this.el).find(this.pg_surgeon).show();
+      $.ajax({
+          url:"send_photo_buttons",
+          type: "get",
+          success: function(res){
+            console.log("success", res);
+          }
+        }).done(function(o){
+          //do something
+          console.log("done", o);
+        });
     }
 
 
