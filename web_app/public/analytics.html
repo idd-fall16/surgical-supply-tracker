@@ -5,43 +5,64 @@
       <link rel="stylesheet" type="text/css" href="/css/index.css">
     </head>
     <body id="view_analytics">
-      <h1>Analytics</h1>
-      <h2>Switch Will Go Here</h2>
-      <h2>Item Usage</h2>
-      <div class="item-usage"></div>
-      <h2>Cost Over Time</h2>
-      <div class="cost-over-time"></div>
-      <h2>Total Cost</h2>
-      <h3 class="total-cost">$761</h3>
-      <h2>Complete List</h2>
-      <table class="small-12 columns">
-        <thead>
-          <tr>
-            <th>Item Name</th>
-            <th>Donating</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody id="page_content_table">
-          <tr>
-            <td>Gauze</td>
-            <td>2</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>TRANSPAC</td>
-            <td>1</td>
-            <td>3</td>
-          </tr>
-          <!-- <script type="text/template" id="page_content_table_template">
-            <tr>
-              <td><%= item_name %></td>
-              <td><%= donating %></td>
-              <td><%= total %></td>
-            </tr>
-          </script> -->
-        </tbody>
-      </table>
+      <header id="page_header">
+        <div class="row page_header_title ">
+            <div class="small-12 columns">
+              <h4>Analytics Case ID</h4>
+            </div>
+        </div>
+      </header>
+
+
+      <section id="page_content">
+        <div class="row ">
+            <!--  replace with js render -->
+            <div class="small-12 columns">
+
+                <h2>Switch Will Go Here</h2>
+                <h2>Item Usage</h2>
+                <div class="item-usage"></div>
+                <h2>Cost Over Time</h2>
+                <div class="cost-over-time"></div>
+                <h2>Total Cost</h2>
+                <h3 class="total-cost">$761</h3>
+                <h2>Complete List</h2>
+                <table class="small-12 columns">
+                  <thead>
+                    <tr>
+                      <th>Item Name</th>
+                      <th>Donating</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id="page_content_table">
+                    <tr>
+                      <td>Gauze</td>
+                      <td>2</td>
+                      <td>5</td>
+                    </tr>
+                    <tr>
+                      <td>TRANSPAC</td>
+                      <td>1</td>
+                      <td>3</td>
+                    </tr>
+                    <!-- <script type="text/template" id="page_content_table_template">
+                      <tr>
+                        <td><%= item_name %></td>
+                        <td><%= donating %></td>
+                        <td><%= total %></td>
+                      </tr>
+                    </script> -->
+                  </tbody>
+                </table>
+            </div>
+        </div>
+      </section>
+
+
+
+    </body>
+
 
 
       <!-- Load c3.css -->

@@ -23,7 +23,7 @@ var App = Backbone.Router.extend({
     this.casesView = new CasesView({ collection: new Cases() });
   },
   analytics: function(){
-    alert();
+    // alert();
     this.analyticsView = new AnalyticsView({ collection: new Case() });
   }
 });
