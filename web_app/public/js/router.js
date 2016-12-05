@@ -20,6 +20,7 @@ var App = Backbone.Router.extend({
     this.caseView = new CaseView({ collection: new Case() });
   },
   cases: function(){
+    debugger;
     this.casesView = new CasesView({ collection: new Cases() });
   },
   analytics: function(){

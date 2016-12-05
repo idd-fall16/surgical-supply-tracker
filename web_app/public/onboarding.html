@@ -43,11 +43,10 @@
             <div class="small-5 small-offset-3 columns">
               <!--  replace with js render -->
               <h2>What is the type of surgery?</h2>
-              <a href="#" class="button" data-dropdown="drop">Link Dropdown &raquo;</a>
-              <ul id="drop" class="smallf-dropdown" data-dropdown-content>
-                <li><a href="#">This is a link</a></li>
-              </ul>
-                <button id='btn_to_surgeon' href='#' class='button'>Next</button>
+              <select>
+                <option value = "Sup">Sup</option>
+              </select>
+              <button id='btn_to_surgeon' href='#' class='button'>Next</button>
             </div>
 
           </div>
@@ -81,14 +80,10 @@
       <!-- <script type="text/javascript" src="/js/case.js"></script> -->
       <script type="text/javascript" src="/js/foundation.js"></script>
       <script type="text/javascript" src="/js/onboarding.js"></script>
+      <script type="text/javascript" src="/js/case.js"></script>
       <script type="text/javascript" src="/js/router.js"></script>
       <script>
-      $(document).foundation({
-        dropdown: {
-          // specify the class used for active dropdowns
-          active_class: 'open'
-        }
-        });
+        $(document).foundation('dropdown');
       </script>
 
 

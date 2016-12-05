@@ -1,7 +1,7 @@
   var Case = Backbone.Collection.extend({
     url: '/api' + window.location.pathname,
     parse: function(data) {
-      debugger;
+      // debugger;
       this.case_number = data.case_number;
       console.log("Parsed data.items: " + data.items);
       return data.items;
@@ -42,7 +42,7 @@
         var new_case_item = scope.template(case_item);
         scope.case_table.append(new_case_item);
       });
-      debugger;
+      // debugger;
       $(scope.el).find(scope.case_number).empty();
       $(scope.el).find(scope.case_number).append(scope.collection.case_number);
     },
