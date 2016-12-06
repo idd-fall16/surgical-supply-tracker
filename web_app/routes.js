@@ -171,16 +171,31 @@ module.exports = function(app) {
       }
     });
 
+    /**
+     * Returns a list of costs of cases given a surgeon.
+     */
     app.put('/api/cases/costs', function(req, res) {
       var surgeon = req.body.surgeon;
       if (!surgeon) {
         res.status(500).send('No surgeon specified.');
       } else {
-        models.Case.find({ surgeon: surgeon }, function(err, cases) {
+        models.Case.aggregate([
+          { '$match' : {
+            surgeon : surgeon
+          }},
+          { '$sort' : {
+            date : -1
+          }},
+          { '$unwind' : '$items' },
+          { '$group' : {
+            _id : '$_id',
+            total_cost : { '$sum' : {'$multiply' : ['$items.cost', '$items.donating']} }
+          }}
+        ], function(err, result) {
           if (err) {
-            console.log(err);
+            res.status(500).send(err);
           } else {
-            res.status(200).send(cases);
+            res.status(200).send(result);
           }
         });
       }
