@@ -26,7 +26,6 @@
       $(".page_footer_content").show();
       $(".page_footer_finish").hide();
       this.collection = options.collection;
-      $(this.el).find(this.el_footer).append("<div class='columns small-3'><button id='btn_stop_scan' href='#' class='button'><h3>STOP SCANNING</h3></button></div>");
 
 
       this.listenTo(this.collection, 'add', function() {console.log('change'); this.render()});

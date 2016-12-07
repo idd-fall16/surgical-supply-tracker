@@ -105,8 +105,7 @@ header {
 
 
 #page_footer {
-  background-color: #193662;
-  color: #fff;
+  color: #000;
   padding: 0rem 4rem;
 }
 
@@ -115,7 +114,7 @@ header {
 }
 
 #view_onboarding #page_content_main, #view_onboarding #page_content_surgery, #view_onboarding #page_content_surgeon {
-  padding-top:15%;
+  padding-top:5%;
 }
 
 #page_content {
@@ -158,9 +157,16 @@ th {
 
 }
 
+#analytics_cost {
+  position:absolute;
+  padding-top: 1rem;
+}
+
+
+
 #btn_analytics {
   text-transform: uppercase;
-  color: #228DC9;
+  color: #fff;
   font-family: "Graphik-Semibold";
   cursor: pointer;
 }
@@ -170,7 +176,7 @@ th {
 }
 
 #view_analytics .tabs{
-  margin: 0 auto;
+  margin: 1rem auto 1rem auto;
   width: 15.5rem;
 
 }
