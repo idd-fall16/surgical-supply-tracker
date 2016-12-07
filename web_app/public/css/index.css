@@ -136,6 +136,20 @@ th {
   display: none;
 }
 
+.page_footer_content {
+
+}
+
+#btn_analytics {
+  text-transform: uppercase;
+  color: #228DC9;
+  font-family: "Graphik-Semibold";
+  cursor: pointer;
+}
+
+#view_cases #page_content_table tr {
+  cursor: pointer;
+}
 
 #view_analytics .tabs{
   margin: 0 auto;
@@ -153,12 +167,14 @@ th {
 }
 
 #view_analytics #page_content_table td,
-#view_case #page_content_table td{
+#view_case #page_content_table td,
+#view_cases #page_content_table td{
   padding: 1rem 0.5rem;
 }
 
 #view_analytics table thead th,
-#view_case table thead th{
+#view_case table thead th,
+#view_cases table thead th{
   padding-left: 0.5rem;
 }
 

@@ -21,6 +21,7 @@ var test;
     cost_el: $('.total-cost'),
     cost: 0,
     case_table: $('#page_content_table'),
+    
     template: _.template($('#page_content_table_template').html()),
     case_number: $('#case_number'),
     initialize: function(options) {
