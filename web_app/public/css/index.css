@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Graphik-Regular';
-  src: url('fonts/Graphik-Refular.ttf')  format('truetype'), /* Safari, Android, iOS */
+  src: url('fonts/Graphik-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
 @font-face {
@@ -14,18 +14,19 @@
 }
 
 .strong {
-  font-family: 'Graphik-Medium';
+  font-family: 'Open Sans';
+  font-weight: 600;
 }
 
 
 body, h1, h2, h3, p {
-  font-family: 'Graphik-Regular', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0px;
 }
 
 h1 {
   font-size: 48px;
-  font-family: 'Graphik-Regular';
+  font-family: 'Open Sans';
 
 }
 
@@ -36,23 +37,27 @@ h2 {
 h3 {
   font-size: 18px;
   text-transform: uppercase;
-  font-family: 'Graphik-Semibold', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
 
 }
 
 h4 {
   font-size: 24px;
-  font-family: 'Graphik-Regular', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
 }
 
 h5 {
-  font-family: 'Graphik-Semibold';
+  font-family: 'Open Sans';
+  font-weight: 600;
   font-size: 14px;
   opacity: 0.5;
 }
 
 h6 {
-  font-family: 'Graphik-Regular';
+  font-family: 'Open Sans';
+  font-weight: 400;
   font-size: 14px;
 }
 
@@ -144,8 +149,8 @@ tr:hover {
 }
 
 th {
-  font-family: 'Graphik-Medium';
-  font-weight: normal;
+  font-family: 'Open Sans';
+  font-weight: 600;
   text-align: left;
 
 }
@@ -174,7 +179,8 @@ th {
   text-transform: uppercase;
   color: #228DC9;
   padding-top:1rem;
-  font-family: "Graphik-Semibold";
+  font-family: "Open Sans";
+  font-weight: 600;
   cursor: pointer;
 }
 
