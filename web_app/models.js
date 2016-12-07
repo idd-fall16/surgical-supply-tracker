@@ -79,7 +79,6 @@ itemSchema.statics.classifyItem = function(text) {
    console.log ('Classified: ' + titles.swanGanz);
    return titles.swanGanz;
  }
- return 'Unknown Item';
 }
 
 var Item = mongoose.model('Item', itemSchema);
