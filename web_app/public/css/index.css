@@ -40,12 +40,30 @@ h3 {
 
 }
 
+h4 {
+  font-size: 24px;
+  font-family: 'Graphik-Regular', sans-serif;
+}
+
+h5 {
+  font-family: 'Graphik-Semibold';
+  font-size: 14px;
+  opacity: 0.5;
+}
+
 p {
   font-size: 2rem;
 }
 
 .button {
   margin: 0rem;
+}
+
+.back_to_dashboard {
+  color: #fff;
+}
+.back_to_dashboard:hover {
+  cursor: pointer;
 }
 
 
