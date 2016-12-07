@@ -89,7 +89,7 @@ module.exports = function(app, runningInCloud) {
           if (err) {
             res.status(400).send(err);
           } else {
-            if (false) {
+            if (!runningInCloud) {
               request({
                 uri: 'http://surgitrack.tech/api/cases',
                 method: 'POST',
@@ -181,7 +181,7 @@ module.exports = function(app, runningInCloud) {
                     if (err) {
                       res.status(400).send('Error: could not save new item');
                     } else {
-                      if (false) {
+                      if (!runningInCloud) {
                         request({
                           uri: 'http://surgitrack.tech/api/cases/'
                                 + req.params.case_number + '/items/json',

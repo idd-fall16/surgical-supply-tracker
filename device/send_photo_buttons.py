@@ -19,13 +19,11 @@ def capture_image():
     hostname_local = 'http://localhost:3000'
     hostname_cloud = 'http://surgitrack.tech'
     case_number = '1'
-    call_string_local = hostname_local + '/api/cases/' + case_number + '/items/photo'
-    call_string_cloud = hostname_cloud + '/api/cases/' + case_number + '/items/photo'
+    call_string = hostname_cloud + '/api/cases/' + case_number + '/items/photo'
     files = { 'devicePicture': open(image_path, 'rb') }
 
-    res_local = requests.post(call_string_local, files=files)
-    res_cloud = requests.post(call_string_cloud, files=files)
-    print res_local, res_cloud
+    res = requests.post(call_string, files=files)
+    print res
 
 #Close Camera
 def close_camera():
