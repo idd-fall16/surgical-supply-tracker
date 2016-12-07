@@ -3216,8 +3216,8 @@ table {
   table thead td,
   table tfoot th,
   table tfoot td {
-    padding: 0.5rem 0.625rem 0.625rem;
-    font-weight: bold;
+    /*padding: 0.5rem 0.625rem 0.625rem;*/
+    /*font-weight: bold;*/
     text-align: left; }
   table tbody tr:nth-child(even) {
     background-color: #f1f1f1; }

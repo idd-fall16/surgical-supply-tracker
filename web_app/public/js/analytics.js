@@ -5,6 +5,7 @@ var test;
     // Specially named function that returns only the case object's item list
     // when referenced
     parse: function(data) {
+      this.case_number = data.case_number;
       console.log("Parsed data.items: " + data.items);
       return data.items;
     }
@@ -13,20 +14,28 @@ var test;
   var AnalyticsView = Backbone.View.extend({
     cost_el: $('.total-cost'),
     cost: 0,
+    case_number: $('#case_number'),
     initialize: function(options) {
       var scope = this;
       this.collection = options.collection;
 
       this.listenTo(this.collection, 'add', function() {console.log('change'); this.render()});
-      scope.collection.fetch();
+
+        scope.collection.fetch().done(scope.render());
+
+      scope.render();
     },
     render: function() {
       var scope = this;
-
+      debugger;
+      $(scope.case_number).empty();
+      $(scope.case_number).append(scope.collection.case_number);
       scope.cost = scope.getTotalCost();
       scope.cost_el.text('$' + scope.cost);
       scope.renderItemUsageChart();
       scope.renderCostOverTimeChart();
+
+
     },
     getCounts: function(fieldName) {
       if (fieldName != 'donating' && fieldName != 'total'

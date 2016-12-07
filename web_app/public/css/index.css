@@ -135,3 +135,51 @@ th {
 #stop_scan {
   display: none;
 }
+
+
+#view_analytics .tabs{
+  margin: 0 auto;
+  width: 15.5rem;
+
+}
+
+#view_analytics .tabs-title{
+  display: inline-block;
+
+}
+
+#view_analytics #items_list {
+  padding-top: 4rem;
+}
+
+#view_analytics #page_content_table td,
+#view_case #page_content_table td{
+  padding: 1rem 0.5rem;
+}
+
+#view_analytics table thead th,
+#view_case table thead th{
+  padding-left: 0.5rem;
+}
+
+#view_onboarding #list_surgeries,
+#view_onboarding #list_surgeons{
+  height: 4.4375rem;
+  padding: 0.5rem;
+  border-top: 0px;
+  border-bottom: 2px solid #25A2AB;
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-family: inherit;
+  line-height: normal;
+  color: white;
+  background-color: transparent;
+  opacity: 10;
+  background-size: 9px 6px;
+  background-position: right -1rem center;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  padding-right: 1.5rem;
+  border-left: 0;
+  border-right: 0;
+}

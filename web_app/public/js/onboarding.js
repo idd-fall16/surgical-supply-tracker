@@ -99,7 +99,6 @@ var OnboardingView = Backbone.View.extend({
             window.location.href = '/cases/' + res.case_number //change to correct id
            },
            error: function(e){
-             alert(e);
              console.log(e);
            }
          });

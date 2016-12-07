@@ -29,11 +29,19 @@
       //FIXME: poll for new data, but try with real time engine
       setInterval(function() {
         scope.collection.fetch();
+        scope.render();
       }, 1000);
+
+
+
+
 
     },
     render: function(){
       var scope = this;
+      $(scope.el).find(scope.case_number).empty();
+      debugger;
+      $(scope.el).find(scope.case_number).append(scope.collection.case_number);
       console.log("render")
       this.case_table.empty();
       // this.case_items = this.model.get("items");
@@ -43,8 +51,7 @@
         scope.case_table.append(new_case_item);
       });
       // debugger;
-      $(scope.el).find(scope.case_number).empty();
-      $(scope.el).find(scope.case_number).append(scope.collection.case_number);
+
     },
     stopScanning: function(){
       console.log("scanning stopped.");
