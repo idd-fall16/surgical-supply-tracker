@@ -41,6 +41,9 @@ app.listen(port, function() {
           console.log('... removing all old cases ...');
           models.Case.remove(null, function(err) {
             if (err) { console.log(err); }
+            else {
+              models.Case.resetCount(function(err, nextCount) {});
+            }
           })
           .then(models.Case.insertMany(cases, function (err, result) {
             console.log('... cases removed, now repopulating...');

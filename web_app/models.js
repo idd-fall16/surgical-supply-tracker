@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var autoIncrement = require('mongoose-auto-increment');
 var url = 'mongodb://localhost:27017/';
 
 // Connecting to database
@@ -8,6 +9,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('Connected to database.');
 });
+autoIncrement.initialize(db);
 
 // Setting up schemas
 var Schema = mongoose.Schema;
@@ -72,7 +74,14 @@ caseSchema.methods.addItem = function(newItem) {
   this.items.push(newItem);
 }
 
+caseSchema.plugin(autoIncrement.plugin, {
+  model: 'Case',
+  field: 'case_number',
+  startAt: 19,
+});
 var Case = mongoose.model('Case', caseSchema);
+
+// Make case_number a sequence
 
 // Export
 module.exports = {}
