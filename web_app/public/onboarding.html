@@ -43,8 +43,10 @@
             <div class="small-5 small-offset-3 columns">
               <!--  replace with js render -->
               <h2>What is the type of surgery?</h2>
-              <select>
-                <option value = "Sup">Sup</option>
+              <select id="list_surgeries">
+                <script type="text/template" id="page_content_surgery_template">
+                  <option><%= surgery_type %></option>
+                </script>
               </select>
               <button id='btn_to_surgeon' href='#' class='button'>Next</button>
             </div>
@@ -57,6 +59,11 @@
             <div class="small-5 small-offset-3 columns">
               <!--  replace with js render -->
               <h2>Who is the surgeon?</h2>
+              <select id="list_surgeons">
+                <script type="text/template" id="page_content_surgeon_template">
+                  <option><%= surgeon %></option>
+                </script>
+              </select>
               <button id='btn_to_session' href='#' class='button'>Create Case</button>
             </div>
 
@@ -83,7 +90,7 @@
       <script type="text/javascript" src="/js/case.js"></script>
       <script type="text/javascript" src="/js/router.js"></script>
       <script>
-        $(document).foundation('dropdown');
+        $(document).foundation();
       </script>
 
 

@@ -14,7 +14,7 @@ var App = Backbone.Router.extend({
   },
   onboarding: function(){
     console.log("onboarding");
-    this.onboardingView = new OnboardingView();
+    this.onboardingView = new OnboardingView({ collection: new OnboardingData() });
   },
   case: function(id){
     this.caseView = new CaseView({ collection: new Case() });

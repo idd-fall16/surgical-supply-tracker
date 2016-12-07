@@ -15,15 +15,27 @@
 
 
       <section id="page_content">
+        <div class="row">
+          <div class="small-3 small-offset-5 columns">
+              <div class="switch large">
+                <input class="switch-input" id="yes-no" type="checkbox" name="exampleSwitch">
+                <label class="switch-paddle" for="yes-no">
+                  <span class="show-for-sr">Do you like me?</span>
+                  <span class="switch-active" aria-hidden="true">$</span>
+                  <span class="switch-inactive" aria-hidden="true">Items</span>
+                </label>
+              </div>
+          </div>
+        </div>
         <div class="row ">
             <!--  replace with js render -->
             <div class="small-12 columns">
 
-                <h2>Switch Will Go Here</h2>
+
                 <h2>Item Usage</h2>
-                <div class="item-usage"></div>
+                <div class="item-usage" data-toggler=".show"></div>
                 <h2>Cost Over Time</h2>
-                <div class="cost-over-time"></div>
+                <div class="cost-over-time" data-toggler=".hide"></div>
                 <h2>Total Cost</h2>
                 <h3 class="total-cost">$761</h3>
                 <h2>Complete List</h2>
@@ -46,13 +58,6 @@
                       <td>1</td>
                       <td>3</td>
                     </tr>
-                    <!-- <script type="text/template" id="page_content_table_template">
-                      <tr>
-                        <td><%= item_name %></td>
-                        <td><%= donating %></td>
-                        <td><%= total %></td>
-                      </tr>
-                    </script> -->
                   </tbody>
                 </table>
             </div>
@@ -76,9 +81,13 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
       <script src="http://underscorejs.org/underscore-min.js"></script>
       <script src="http://backbonejs.org/backbone-min.js"></script>
+      <script type="text/javascript" src="/js/foundation.js"></script>
 
       <script src="/js/analytics.js"></script>
       <script src="/js/router.js"></script>
+      <script>
+        $(document).foundation();
+      </script>
 
 
 
