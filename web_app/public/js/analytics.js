@@ -71,11 +71,14 @@ var test;
       return total;
     },
     getTotalCostsOverDates: function() {
-      var arr = ['Cost Over Time'];
+      var arr = [];
       this.costCollection.each(function(model) {
         var costObj = model.attributes;
         arr.push(costObj.total_cost);
       });
+      // Reverse because DB returns earliest case last
+      arr.push('Cost over Time');
+      arr.reverse();
       return arr;
     },
     renderItemUsageChart : function() {
