@@ -44,8 +44,9 @@ var test;
       scope.cost_el.text('$' + scope.cost);
       scope.renderItemUsageChart();
 
+      var dates = scope.getDates();
       var allCosts = scope.getTotalCostsOverDates();
-      scope.renderCostOverTimeChart(allCosts);
+      scope.renderCostOverTimeChart(dates, allCosts);
     },
     getCounts: function(fieldName) {
       if (fieldName != 'donating' && fieldName != 'total'
@@ -69,6 +70,17 @@ var test;
         total += cost * donating;
       });
       return total;
+    },
+    getDates: function() {
+      var arr = [];
+      this.costCollection.each(function(model) {
+        var costObj = model.attributes;
+        console.log(costObj._id);
+        arr.push(costObj._id);
+      });
+      // Reverse because DB returns earliest case last
+      arr.reverse();
+      return arr;
     },
     getTotalCostsOverDates: function() {
       var arr = [];
@@ -122,7 +134,7 @@ var test;
           }
       });
     },
-    renderCostOverTimeChart : function(allCosts) {
+    renderCostOverTimeChart : function(dates, allCosts) {
       var costOverTime = c3.generate({
           bindto: '.cost-over-time',
           data: {
@@ -141,6 +153,9 @@ var test;
               label: {
                 text: 'Date',
                 position: 'outer-middle'
+              },
+              tick: {
+                values: dates
               }
             }
           }
