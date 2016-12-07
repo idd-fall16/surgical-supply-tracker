@@ -36,7 +36,7 @@ b1 = Button(f, text="Capture Image")
 b2 = Button(f,text="Stop Camera")
 b1.pack(side=LEFT, padx =5)
 b2.pack(side=LEFT, padx =5)
-l = Label(win, text="Select an options below")
+l = Label(win, text="Image Text on Item Package")
 l.pack(side=TOP)
 f.pack()
 
