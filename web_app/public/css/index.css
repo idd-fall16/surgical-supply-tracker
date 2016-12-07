@@ -69,10 +69,10 @@ p {
   margin: 0rem;
 }
 
-.back_to_dashboard {
+.back_to_dashboard, .back_to_home {
   color: #fff;
 }
-.back_to_dashboard:hover {
+.back_to_dashboard:hover, .back_to_home:hover {
   cursor: pointer;
 }
 
@@ -128,7 +128,7 @@ header {
 }
 
 #page_content {
-  padding: 0rem 4rem;
+  padding: 0rem 3rem;
 }
 
 #page_content_main, #page_content_surgery, #page_content_surgeon {
