@@ -134,6 +134,9 @@ module.exports = function(app) {
               return;
             }
             var itemName = models.Item.classifyItem(text);
+            if (!itemName) {
+              res.status(400).send('Error: could not classify item.')
+            }
 
             //FIXME: DRY this up okay
             // Create new item

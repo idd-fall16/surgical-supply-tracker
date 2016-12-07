@@ -27,9 +27,9 @@ var itemSchema = new Schema({
 // FIXME: use actual mapping to do this
 itemSchema.statics.classifyItem = function(text) {
  var titles = {
-   catheter : 'Safety IV Catheters',
-   tracheostomy : 'Tracheostomy Tube Cuffless',
-   transpac : 'Transpac IV Monitoring Kit',
+   catheter : 'Safety IV Catheters - Radiopaque (Jelco)',
+   tracheostomy : 'Shiley Tracheostomy Tube Cuffless with Disposable Inner Cannula (Covidian)',
+   transpac : 'Transpac IV Monitoring Kit (ICU Medical)',
    gauze : 'Dermacea USP Type VII Gauze (Covidien)',
    secondarySet : 'IV Secondary Set',
    injection: '0.9% Sodium Chloride Injection USP',
@@ -79,7 +79,6 @@ itemSchema.statics.classifyItem = function(text) {
    console.log ('Classified: ' + titles.swanGanz);
    return titles.swanGanz;
  }
- return 'Unknown Item';
 }
 
 var Item = mongoose.model('Item', itemSchema);
