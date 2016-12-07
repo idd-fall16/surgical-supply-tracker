@@ -183,7 +183,7 @@ module.exports = function(app, runningInCloud) {
                       res.status(200).send('Added item in:\n' + matchingCase);
                       request({
                         uri: 'http://surgitrack.tech/api/cases/'
-                              + req.params.case_number + '/items/photo',
+                              + req.params.case_number + '/items/json',
                         method: 'POST',
                         json: newItem,
                       }, function(err, res, body) {
