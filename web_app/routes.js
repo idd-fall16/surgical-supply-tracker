@@ -387,7 +387,10 @@ module.exports = function(app, runningInCloud) {
     });
 
     app.get('/send_photo_buttons/:case_number', function(req, res) {
-      // res.sendFile(path.join(__dirname + '/public/send_photo.py'));
+      if (runningInCloud) {
+        res.status(400).send('Cannot run python script on cloud.');
+        return;
+      }
       pythonShell.run('/public/send_photo_buttons.py', { args: req.params.case_number }, function (err, results) {
 	console.log('Opening camera for case ' + req.params.case_number);
         if (err) {
@@ -405,7 +408,7 @@ module.exports = function(app, runningInCloud) {
      });
 
      app.get('/cases', function (req, res) {
-       
+
          res.sendFile(path.join(__dirname + '/public/cases.html'));
      });
 }
