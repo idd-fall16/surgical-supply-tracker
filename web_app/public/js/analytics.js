@@ -146,11 +146,7 @@ var test;
               }
             },
             x: {
-              type: 'category',
-              label: {
-                text: 'Supply Type',
-                position: 'middle'
-              }
+              type: 'category'
             }
           }
       });
