@@ -20,7 +20,6 @@ var CasesView = Backbone.View.extend({
 
     var scope = this;
     _.bindAll(this, 'render');
-debugger;
     this.collection = options.collection;
     this.listenTo(this.collection, 'add', function() {console.log('change'); this.render()});
     //FIXME: poll for new data, but try with real time engine
