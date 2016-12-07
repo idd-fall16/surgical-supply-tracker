@@ -154,7 +154,8 @@ module.exports = function(app, runningInCloud) {
             }
             var itemName = models.Item.classifyItem(text);
             if (!itemName) {
-              res.status(400).send('Error: could not classify item.')
+              res.status(400).send('Error: could not classify item.');
+              return;
             }
 
             //FIXME: DRY this up okay
