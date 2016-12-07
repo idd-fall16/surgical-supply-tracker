@@ -71,8 +71,14 @@ module.exports = function(app) {
             new models.Item({
               item_name: "Swan-Ganz (Edwards Lifesciences)",
               donating: 0,
-              total: 1,
+              total: 3,
               cost: "1500.00"
+            }),
+            new models.Item({
+              item_name: "Dermacea USP Type VII Gauze (Covidien)",
+              donating: 0,
+              total: 10,
+              cost: "3.99"
             })
           ]
         });
