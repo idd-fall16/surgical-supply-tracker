@@ -19,7 +19,7 @@ def capture_image():
     hostname_local = 'http://localhost:3000'
     hostname_cloud = 'http://surgitrack.tech'
     case_number = '1'
-    call_string = hostname_cloud + '/api/cases/' + case_number + '/items/photo'
+    call_string = hostname_local + '/api/cases/' + case_number + '/items/photo'
     files = { 'devicePicture': open(image_path, 'rb') }
 
     res = requests.post(call_string, files=files)
