@@ -117,9 +117,6 @@ header {
   padding: 0rem 4rem;
 }
 
-#btn_start_scan {
-
-}
 
 #view_onboarding #page_content_main, #view_onboarding #page_content_surgery, #view_onboarding #page_content_surgeon {
   padding-top:5%;
@@ -172,9 +169,10 @@ th {
 
 
 
-#btn_analytics {
+#btn_start_camera {
   text-transform: uppercase;
-  color: #fff;
+  color: #228DC9;
+  padding-top:1rem;
   font-family: "Graphik-Semibold";
   cursor: pointer;
 }

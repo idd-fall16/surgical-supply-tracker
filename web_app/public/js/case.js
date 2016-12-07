@@ -19,6 +19,7 @@
     btn_finish: $('#btn_stop_scan'),
     template: _.template($('#page_content_table_template').html()),
     events: {
+      'click #btn_start_camera': 'startCamera',
       'click #btn_stop_scan': 'stopScanning',
       'click #btn_analytics': 'viewAnalytics'
     },
@@ -66,5 +67,19 @@
     },
     viewAnalytics: function(){
       window.location.href = window.location.href + '/analytics';
+    },
+    startCamera: function(){
+      debugger;
+      var scope = this;
+      $.ajax({
+          url:"../send_photo_buttons/" + scope.collection.case_number,
+          type: "get",
+          success: function(res){
+            console.log("success", res);
+          }
+        }).done(function(o){
+          //do something
+          console.log("done", o);
+        });
     }
   });
