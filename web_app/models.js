@@ -59,12 +59,6 @@ itemSchema.statics.classifyItem = function(text) {
  if (textArray.includes('TEAR') || textArray.includes('Alaris')
      || textArray.includes('Secondary') || textArray.includes('WARNING')
      || textArray.includes('DIRECTIONS')) {
-   console.log ('Classified: ' + titles.gauze);
-   return titles.gauze;
- }
- if (textArray.includes('TEAR') || textArray.includes('Alaris')
-     || textArray.includes('Secondary') || textArray.includes('WARNING')
-     || textArray.includes('DIRECTIONS')) {
    console.log ('Classified: ' + titles.secondarySet);
    return titles.secondarySet;
  }
