@@ -10,15 +10,32 @@ var test;
     }
   });
 
+  var Costs = Backbone.Collection.extend({
+    url: '/api' + window.location.pathname
+          .replace('/analytics', '')
+          .concat('/costs'),
+  });
+
   var AnalyticsView = Backbone.View.extend({
     cost_el: $('.total-cost'),
     cost: 0,
     initialize: function(options) {
       var scope = this;
-      this.collection = options.collection;
 
-      this.listenTo(this.collection, 'add', function() {console.log('change'); this.render()});
+      test = this;
+      this.collection = options.collection;
+      this.costCollection = options.costCollection;
+
+      this.listenTo(this.collection, 'add', function() {
+        console.log('collection changed');
+        this.render()
+      });
+      this.listenTo(this.costCollection, 'add', function() {
+        console.log('cost collection changed');
+        this.render()
+      });
       scope.collection.fetch();
+      scope.costCollection.fetch();
     },
     render: function() {
       var scope = this;
@@ -26,7 +43,9 @@ var test;
       scope.cost = scope.getTotalCost();
       scope.cost_el.text('$' + scope.cost);
       scope.renderItemUsageChart();
-      scope.renderCostOverTimeChart();
+
+      var allCosts = scope.getTotalCostsOverDates();
+      scope.renderCostOverTimeChart(allCosts);
     },
     getCounts: function(fieldName) {
       if (fieldName != 'donating' && fieldName != 'total'
@@ -50,6 +69,14 @@ var test;
         total += cost * donating;
       });
       return total;
+    },
+    getTotalCostsOverDates: function() {
+      var arr = ['Cost Over Time'];
+      this.costCollection.each(function(model) {
+        var costObj = model.attributes;
+        arr.push(costObj.total_cost);
+      });
+      return arr;
     },
     renderItemUsageChart : function() {
       var prefCardCounts = this.getCounts('total');
@@ -92,12 +119,12 @@ var test;
           }
       });
     },
-    renderCostOverTimeChart : function() {
+    renderCostOverTimeChart : function(allCosts) {
       var costOverTime = c3.generate({
           bindto: '.cost-over-time',
           data: {
             columns: [
-              ['Cost', 1000, 900, 234, 890, 740, 600, this.cost],
+              allCosts,
             ],
           },
           axis: {
