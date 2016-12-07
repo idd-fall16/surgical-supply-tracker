@@ -34,12 +34,12 @@ module.exports = function(app) {
         surgeon : String
      * }
      */
-    app.post('/api/cases/:case_number', function(req, res) {
-      if (!req.params.case_number || !req.body) {
+    app.post('/api/cases/', function(req, res) {
+      if (!req.body) {
         res.status(400).send('Error: incorrect parameters for creating case.');
       } else {
         var newCase = new models.Case({
-          case_number: req.params.case_number,
+          // case_number: req.params.case_number,
           surgery_type: req.body.surgery_type,
           surgeon: req.body.surgeon,
           items: []
@@ -172,33 +172,35 @@ module.exports = function(app) {
     });
 
     /**
-     * Returns a list of costs of cases given a surgeon.
+     * Returns a list of costs of cases for the surgeon for the given case.
      */
-    app.put('/api/cases/costs', function(req, res) {
-      var surgeon = req.body.surgeon;
-      if (!surgeon) {
-        res.status(500).send('No surgeon specified.');
-      } else {
-        models.Case.aggregate([
-          { '$match' : {
-            surgeon : surgeon
-          }},
-          { '$sort' : {
-            date : -1
-          }},
-          { '$unwind' : '$items' },
-          { '$group' : {
-            _id : '$_id',
-            total_cost : { '$sum' : {'$multiply' : ['$items.cost', '$items.donating']} }
-          }}
-        ], function(err, result) {
-          if (err) {
-            res.status(500).send(err);
-          } else {
-            res.status(200).send(result);
-          }
-        });
-      }
+    app.get('/api/cases/:case_number/costs', function(req, res) {
+      models.Case.findOne({ case_number: req.params.case_number }, function(err, matchingCase) {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          var surgeon = matchingCase.surgeon;
+          models.Case.aggregate([
+            { '$match' : {
+              surgeon : surgeon
+            }},
+            { '$sort' : {
+              date : -1
+            }},
+            { '$unwind' : '$items' },
+            { '$group' : {
+              _id : '$_id',
+              total_cost : { '$sum' : {'$multiply' : ['$items.cost', '$items.donating']} }
+            }}
+          ], function(err, result) {
+            if (err) {
+              res.status(500).send(err);
+            } else {
+              res.status(200).send(result);
+            }
+          });
+        }
+      });
     });
 
     // Frontend Routes ===============
