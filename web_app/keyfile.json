@@ -1,3 +1,12 @@
 {
-  "type": "ask someone for this file",
+  "type": "service_account",
+  "project_id": "surgitrack",
+  "private_key_id": "295630cd87bb2eb48456040bf1815b98646c59fa",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDsltzKO44JiC2B\nwC6HMYzSwiCAzGNRB2f+hd2NP9gnBYS7yrC1rIQItAkJKVUzKen50bbHfeiOULwz\nZ1QDJImWaV+YGP5QBOVBAUohWIkWVnW1zQeWXJKScBQqWlrolGmh1BnsiDYew+tT\nMzxHfShE+ivcCaYbP7plxffW2whxUsZhZt/pmqYDDMVI3PuzhW0yv7byeCcuuZCh\nzqOkyoV5XQwl8/929GUXDIcD1RaE9kb9P8FmSIxADRjJowpVH7n9SOaqI68wDRmt\nppk8+CY4cQAzRfdJXTkHTKgL+ZSEkswH3vlM1Glh5YW8KgO/rg+q4xTS+qoNs4hF\njJKic+KRAgMBAAECggEAMa9A8Mtu+bt6awwz+TpDq6MO9l114fdfNIliTJ6Cwzca\nd+GKGK0BEV7VovHmLZd4xnjvHJfpdbGoxFbHwt0yc77vT164UY+loXAm5DfWmjVQ\nBPzowf/w3AXjhj1xZ/R69nw3cX/tdaqJSfCxkQXMpievfEcedgx9FZBsitd2v21O\nQmWMrwogmDVUte45os4TEUTlbbf0Rimn1+zhO+ORJzCLvLTCLfzB0ANH4qWmI9t4\ny37wRmDvRP8Tmgs08EN0NFU7Og3vpVRkaWFi9CoqfHZvu9h1cGj1xkDiODPzMVpn\n15lG2xQnhy8WbnPJTnKhC2H/o5Y7v0QanIoP6eBhnQKBgQD/RO9DFxuFCygudUHh\n53z+nI+qz1BD7v31jE8ilpDPs0/DrV/oIjmx5udlZCL/rzFtI0q4d5CpuQCz8PMq\nZAf+PRyccGgEpKRXTIp54zwy0kol2H1Bth5xkyB2K4HeQxoFZ73KNnK10eSWDX2L\nMS0lV+K1Q+jM6kHd8xa3B4jo8wKBgQDtRD0mQEfkTjg80D2He/G0VR+cMABvm1xV\nW67qASJiVf0oYVsQV4VDoD/E8Dnu7WYf5t710uNOIh16DIMHcNDRuNFSlyksaLMl\n3AuBg6Ob7WXshaxk1Ro+fl9DZaBKg/UxDttUitu/Sw7zHQbpWKfy5hzedbgz5qQ0\nlkP/86ynawKBgHBLRO3AloyacdyuHINiMCxZdyHu/SJFWlbQmGdg0OdtvCMae9xE\nYhkOuLBzsqnDyfx20AICJxNinRqLXo1BX/rJq3JuSHPycZEtzKT9/5djxtaLO97S\nXOYdkOQrE4BRCHtkPatc9G1jnikcWiQHSBLrbIHNE/ZA/yTCMTXnDKVdAoGBAMlf\n3GKFtj7AYJzExSQjfx5mDQEcAJK5EqHjwc4cDlnVz5qhHo/9KD8gWF9G4HS4CrBS\n27NaPNAIxmnbCq6bArCtIwPtBeYKKtqcKyvOVWM3FwWq4olmEPMvgJ0MOQJlgwoT\nKPZVMHLoOpT+cupD86+FvMTWtvNd8sorKyWmZEhnAoGBAJZZMVrchUy45TMH6E+o\nvUsAi4Byzb5LT8ZM0vyZvcsCTQhkv5iR2JMnkPccFltVPaPgkjMfGHgnnFQydgJp\nWkG7osP60Mdgxp+Rl20+M129/NeNs8Y2BwmVuUkn6r6P92vGalq0D7bSWoEc+r/O\nOvuedhNL2yWe+k5dRF4s1m/F\n-----END PRIVATE KEY-----\n",
+  "client_email": "surgitrack@surgitrack.iam.gserviceaccount.com",
+  "client_id": "109636163768527671354",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/surgitrack%40surgitrack.iam.gserviceaccount.com"
 }

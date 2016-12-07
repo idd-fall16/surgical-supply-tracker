@@ -3,6 +3,8 @@
     parse: function(data) {
       // debugger;
       this.case_number = data.case_number;
+      this.surgery_type = data.surgery_type;
+      this.surgeon = data.surgeon
       console.log("Parsed data.items: " + data.items);
       return data.items;
     }
@@ -35,16 +37,16 @@
         scope.render();
       }, 1000);
 
-
-
-
-
     },
     render: function(){
       var scope = this;
       $(scope.el).find(scope.case_number).empty();
       // debugger;
       $(scope.el).find(scope.case_number).append(scope.collection.case_number);
+      $('#case_surgeon').empty();
+      $('#case_surgery').empty();
+      $('#case_surgeon').append(scope.collection.surgeon);
+      $('#case_surgery').append(scope.collection.surgery_type + ',');
       console.log("render")
       this.case_table.empty();
       // this.case_items = this.model.get("items");

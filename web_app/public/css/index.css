@@ -51,6 +51,11 @@ h5 {
   opacity: 0.5;
 }
 
+h6 {
+  font-family: 'Graphik-Regular';
+  font-size: 14px;
+}
+
 p {
   font-size: 2rem;
 }
@@ -66,6 +71,9 @@ p {
   cursor: pointer;
 }
 
+#case_surgery, #case_surgeon {
+  display: inline-block;
+}
 
 #view_onboarding {
   background-color: #193662;
