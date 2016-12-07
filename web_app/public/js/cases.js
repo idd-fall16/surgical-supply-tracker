@@ -11,13 +11,16 @@ var CasesView = Backbone.View.extend({
   el: $('#view_cases'),
   // el_footer: $('.page_footer_content'),
   case_table: $('#page_content_table'),
+  case: $('.case'),
   template: _.template($('#page_content_table_template').html()),
-  // events: {
-  //   'click #btn_stop_scan': 'stopScanning'
+  events: {
+    'click .case': 'goToCase'
+  },
   initialize: function(options){
 
     var scope = this;
     _.bindAll(this, 'render');
+
     this.collection = options.collection;
     this.listenTo(this.collection, 'add', function() {console.log('change'); this.render()});
     //FIXME: poll for new data, but try with real time engine
@@ -28,7 +31,7 @@ var CasesView = Backbone.View.extend({
   render: function(){
     var scope = this;
     console.log("render")
-    debugger;
+    // debugger;
     scope.case_table.empty();
     _.each(this.collection.models, function(model) {
       var case_attributes = model.attributes;
@@ -38,5 +41,10 @@ var CasesView = Backbone.View.extend({
   },
   stopScanning: function(){
     console.log("scanning stopped.");
+
+  },
+  goToCase: function(obj){
+    var case_number = $(obj.target).prev()[0].innerText;
+    window.location.href = window.location.href + '/' + case_number ;
   }
 });
