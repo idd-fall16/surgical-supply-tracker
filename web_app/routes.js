@@ -180,16 +180,20 @@ module.exports = function(app, runningInCloud) {
                     res.status(400).send('Error: could not save new item');
                   } else {
                     if (!runningInCloud) {
-                      res.status(200).send('Added item in:\n' + matchingCase);
                       request({
                         uri: 'http://surgitrack.tech/api/cases/'
                               + req.params.case_number + '/items/json',
                         method: 'POST',
                         json: newItem,
-                      }, function(err, res, body) {
+                      }, function(secondaryErr, secondaryRes, secondaryBody) {
                         console.log('Reponse from cloud server:');
-                        console.log(body);
+                        console.log(secondaryBody);
+                        // Have to delay the origin response until the end
+                        res.status(200).send('Added item in:\n' + matchingCase);
                       });
+                    } else {
+                      // Without a secondary request, just send response
+                      res.status(200).send('Added item in:\n' + matchingCase);
                     }
                   }
                 });
