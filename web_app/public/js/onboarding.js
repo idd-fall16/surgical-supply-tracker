@@ -95,6 +95,13 @@ var OnboardingView = Backbone.View.extend({
                 //do something
                 console.log("done", o);
               });
+            // Second request to cloud
+            $.ajax({
+              type: "POST",
+              url: "http://surgitrack.tech/api/cases",
+              data: JSON.stringify(dataString),
+              contentType: "application/json",
+            });
            },
            error: function(e){
              console.log(e);
