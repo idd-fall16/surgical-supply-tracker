@@ -82,6 +82,12 @@ module.exports = function(app, runningInCloud) {
               donating: 0,
               total: 10,
               cost: "3.99"
+            }),
+            new models.Item({
+              item_name: "Transpac IV Monitoring Kit (ICU Medical)",
+              donating: 0,
+              total: 6,
+              cost: "21.00"
             })
           ]
         });
