@@ -8,7 +8,8 @@ from Tkinter import *
 #PiCam Setup
 camera = PiCamera()
 image_path = '/home/pi/Desktop/image.jpg'
-camera.start_preview(fullscreen=False, window = (560, 75, 240, 180))
+camera.rotation = 180
+camera.start_preview(fullscreen=False, window = (560, 100, 240, 180))
 
 #Capture Image
 def capture_image():
