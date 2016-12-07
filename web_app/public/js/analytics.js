@@ -21,7 +21,7 @@ var test;
     cost_el: $('.total-cost'),
     cost: 0,
     case_table: $('#page_content_table'),
-    
+
     template: _.template($('#page_content_table_template').html()),
     case_number: $('#case_number'),
     initialize: function(options) {
@@ -116,6 +116,12 @@ var test;
 
       var itemNames = this.getCounts('item_name');
       itemNames = ['x'].concat(itemNames);
+
+      // Truncate item names
+      var maxLength = 20;
+      itemNames.forEach(function(el, idx, arr) {
+        arr[idx] = el.substring(0, maxLength);
+      });
 
       var itemUsage = c3.generate({
           bindto: '.item-usage',
