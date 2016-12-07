@@ -9,7 +9,7 @@ from Tkinter import *
 camera = PiCamera()
 image_path = '/home/pi/Desktop/image.jpg'
 camera.rotation = 180
-camera.start_preview(fullscreen=False, window = (315, -20, 240, 180))
+camera.start_preview(fullscreen=False, window = (315, -20, 240, 170))
 
 #Capture Image
 def capture_image():
