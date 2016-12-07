@@ -89,7 +89,7 @@ module.exports = function(app, runningInCloud) {
           if (err) {
             res.status(400).send(err);
           } else {
-            if (!false) {
+            if (false) {
               request({
                 uri: 'http://surgitrack.tech/api/cases',
                 method: 'POST',
