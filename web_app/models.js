@@ -75,7 +75,7 @@ itemSchema.statics.classifyItem = function(text) {
    return titles.injection;
  }
  if (textArray.includes('Edwards') || textArray.includes('Lifesciences')
-     || textArray.includes('Swan-Ganz') || textArray.includes('E') {
+     || textArray.includes('Swan-Ganz') || textArray.includes('E')) {
    console.log ('Classified: ' + titles.swanGanz);
    return titles.swanGanz;
  }
