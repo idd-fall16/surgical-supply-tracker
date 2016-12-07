@@ -25,7 +25,7 @@ var App = Backbone.Router.extend({
   },
   analytics: function(){
     // alert();
-    this.analyticsView = new AnalyticsView({ collection: new Case() });
+    this.analyticsView = new AnalyticsView({ collection: new Case(), costCollection: new Costs() });
   }
 });
 
