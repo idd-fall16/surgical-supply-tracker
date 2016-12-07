@@ -90,22 +90,18 @@ var test;
       this.costCollection.each(function(model) {
         var costObj = model.attributes;
         console.log(costObj._id);
-        arr.push(costObj._id);
+        arr.push(costObj._id.substring(0, 10));
       });
       // Reverse because DB returns earliest case last
-      arr.reverse();
-      return arr;
+      return arr.reverse();
     },
     getTotalCostsOverDates: function() {
-      var arr = [];
+      var arr = ['Cost over Time'];
       this.costCollection.each(function(model) {
         var costObj = model.attributes;
         var cost = Math.round(costObj.total_cost * 100) / 100;
         arr.push(cost);
       });
-      // Reverse because DB returns earliest case last
-      arr.push('Cost over Time');
-      arr.reverse();
       return arr;
     },
     renderItemUsageChart : function() {
@@ -167,13 +163,8 @@ var test;
               }
             },
             x: {
-              label: {
-                text: 'Date',
-                position: 'outer-middle'
-              },
-              tick: {
-                values: dates
-              }
+              type: 'category',
+              categories: dates
             }
           }
       });
