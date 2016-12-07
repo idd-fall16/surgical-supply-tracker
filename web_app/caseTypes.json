@@ -1,31 +1,52 @@
 {
-  "surgeon" : [
-    "Jonathan Bresenham MD",
-    "James Burke MD, PhD",
-    "Andrew Tran MD",
-    "Jennifer Lasker MD, PhD",
-    "Daniel Lau MD",
-    "Young Lam MD",
-    "Corinna Georgiou MD",
-    "Michaela Sufid MD",
-    "Stephanie McGill MD, PhD",
-    "Ethan Rutledge MD"
+  "surgeons" : [
+    { "surgeon" : "Jonathan Bresenham MD" },
+    { "surgeon" : "James Burke MD, PhD" },
+    { "surgeon" : "Andrew Tran MD" },
+    { "surgeon" : "Jennifer Lasker MD, PhD" },
+    { "surgeon" : "Daniel Lau MD" },
+    { "surgeon" : "Young Lam MD" },
+    { "surgeon" : "Corinna Georgiou MD" },
+    { "surgeon" : "Michaela Sufid MD" },
+    { "surgeon" : "Stephanie McGill MD, PhD" },
+    { "surgeon" : "Ethan Rutledge MD" }
   ],
-  "surgery_type" : [
-    "Craniectomy",
-    "External Venticular Drain (EVD)",
-    "Endoscopic Third Ventriculostomy (ETV)",
-    "Intrathecal Baclofen Pump",
-    "Spinal Fusion",
-    "Ventriculo-Peritoneal Shunt"
+  "surgery_types" : [
+    { "surgery_type" : "Craniectomy" },
+    { "surgery_type" : "External Venticular Drain (EVD)" },
+    { "surgery_type" : "Endoscopic Third Ventriculostomy (ETV)" },
+    { "surgery_type" : "Intrathecal Baclofen Pump" },
+    { "surgery_type" : "Spinal Fusion" },
+    { "surgery_type" : "Ventriculo-Peritoneal Shunt" }
   ],
-  "items_with_cost" : {
-    "Safety IV Catheters - Radiopaque (Jelco)" : "135.00",
-    "Dermacea USP Type VII Gauze (Covidien)" : "3.99",
-    "IV Secondary Set" : "5.00",
-    "0.9% Sodium Chloride Injection USP" : "10.95",
-    "Swan-Ganz (Edwards Lifesciences)" : "1500.00",
-    "Shiley Tracheostomy Tube Cuffless with Disposable Inner Cannula (Covidian)" : "75.21",
-    "Transpac IV Monitoring Kit (ICU Medical)" : "21.00"
-  }
+  "items_with_cost" : [
+    {
+      "item_name" : "Safety IV Catheters - Radiopaque (Jelco)",
+      "cost" : "135.00"
+    },
+    {
+      "item_name" : "Dermacea USP Type VII Gauze (Covidien)",
+      "cost" : "3.99"
+    },
+    {
+      "item_name" : "IV Secondary Set",
+      "cost" : "5.00"
+    },
+    {
+      "item_name" : "0.9% Sodium Chloride Injection USP",
+      "cost" : "10.95"
+    },
+    {
+      "item_name" : "Swan-Ganz (Edwards Lifesciences)",
+      "cost" : "1500.00"
+    },
+    {
+      "item_name" : "Shiley Tracheostomy Tube Cuffless with Disposable Inner Cannula (Covidian)",
+      "cost" : "75.21"
+    },
+    {
+      "item_name" : "Transpac IV Monitoring Kit (ICU Medical)",
+      "cost" : "21.00"
+    }
+  ]
 }
