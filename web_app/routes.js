@@ -180,7 +180,7 @@ module.exports = function(app, runningInCloud) {
                     res.status(400).send('Error: could not save new item');
                   } else {
                     if (!runningInCloud) {
-                        res.status(200).send('Added item in:\n' + matchingCase);
+                      res.status(200).send('Added item in:\n' + matchingCase);
                       request({
                         uri: 'http://surgitrack.tech/api/cases/'
                               + req.params.case_number + '/items/json',

@@ -119,7 +119,7 @@ header {
 
 
 #view_onboarding #page_content_main, #view_onboarding #page_content_surgery, #view_onboarding #page_content_surgeon {
-  padding-top:5%;
+  padding-top: 15%;
 }
 
 #page_content {
@@ -127,7 +127,7 @@ header {
 }
 
 #page_content_main, #page_content_surgery, #page_content_surgeon {
-  padding: 0rem 4rem;
+  /*padding: 0rem 4rem;*/
 }
 
 .page_content_table{
@@ -183,7 +183,7 @@ th {
 
 #view_analytics .tabs{
   margin: 1rem auto 1rem auto;
-  width: 15.5rem;
+  width: 16rem;
 
 }
 
