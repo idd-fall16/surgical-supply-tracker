@@ -20,6 +20,8 @@ var test;
   var AnalyticsView = Backbone.View.extend({
     cost_el: $('.total-cost'),
     cost: 0,
+    case_table: $('#page_content_table'),
+    template: _.template($('#page_content_table_template').html()),
     case_number: $('#case_number'),
     initialize: function(options) {
       var scope = this;
@@ -40,21 +42,22 @@ var test;
     },
     render: function() {
       var scope = this;
-      debugger;
       $(scope.case_number).empty();
       $(scope.case_number).append(scope.collection.case_number);
       scope.cost = scope.getTotalCost();
       scope.cost_el.text('$' + scope.cost);
       scope.renderItemUsageChart();
-<<<<<<< HEAD
-      scope.renderCostOverTimeChart();
-
-
-=======
 
       var allCosts = scope.getTotalCostsOverDates();
       scope.renderCostOverTimeChart(allCosts);
->>>>>>> 970d8a1297c5c4d68e77d6a554604fd92591662a
+
+      this.case_table.empty();
+      // this.case_items = this.model.get("items");
+      this.collection.each(function(model) {
+        var case_item = model.attributes;
+        var new_case_item = scope.template(case_item);
+        scope.case_table.append(new_case_item);
+      });
     },
     getCounts: function(fieldName) {
       if (fieldName != 'donating' && fieldName != 'total'

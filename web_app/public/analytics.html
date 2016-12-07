@@ -49,16 +49,13 @@
                       </tr>
                     </thead>
                     <tbody id="page_content_table">
-                      <tr>
-                        <td>Gauze</td>
-                        <td>2</td>
-                        <td>5</td>
-                      </tr>
-                      <tr>
-                        <td>TRANSPAC</td>
-                        <td>1</td>
-                        <td>3</td>
-                      </tr>
+                      <script type="text/template" id="page_content_table_template">
+                        <tr>
+                          <td><%= item_name %></td>
+                          <td><%= donating %></td>
+                          <td><%= total %></td>
+                        </tr>
+                      </script>
                     </tbody>
                   </table>
                 </div>
