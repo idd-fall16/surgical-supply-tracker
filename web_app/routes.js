@@ -355,7 +355,8 @@ module.exports = function(app) {
 
     app.get('/send_photo_buttons/:case_number', function(req, res) {
       // res.sendFile(path.join(__dirname + '/public/send_photo.py'));
-      pythonShell.run('/public/send_photo_buttons.py ' + req.params.case_number, function (err, results) {
+      pythonShell.run('/public/send_photo_buttons.py', { args: req.params.case_number }, function (err, results) {
+	console.log('Opening camera for case ' + req.params.case_number);
         if (err) {
           console.log("error", err);
           res.status(400).send(err);
