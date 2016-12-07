@@ -42,7 +42,39 @@ module.exports = function(app) {
           // case_number: req.params.case_number,
           surgery_type: req.body.surgery_type,
           surgeon: req.body.surgeon,
-          items: []
+          // Insert data from the preference card, which is constant for now.
+          items: [
+            new models.Item({
+              item_name: "Safety IV Catheters - Radiopaque (Jelco)",
+              donating: 0,
+              total: 5,
+              cost: "135.00"
+            }),
+            new models.Item({
+              item_name: "IV Secondary Set",
+              donating: 0,
+              total: 2,
+              cost: "5.00"
+            }),
+            new models.Item({
+              item_name: "Shiley Tracheostomy Tube Cuffless with Disposable Inner Cannula (Covidian)",
+              donating: 0,
+              total: 3,
+              cost: "75.21"
+            }),
+            new models.Item({
+              item_name: "0.9% Sodium Chloride Injection USP",
+              donating: 0,
+              total: 20,
+              cost: "135.00"
+            }),
+            new models.Item({
+              item_name: "Swan-Ganz (Edwards Lifesciences)",
+              donating: 0,
+              total: 1,
+              cost: "1500.00"
+            })
+          ]
         });
         newCase.save(function(err) {
           if (err) {
@@ -189,7 +221,7 @@ module.exports = function(app) {
             }},
             { '$unwind' : '$items' },
             { '$group' : {
-              _id : '$_id',
+              _id : '$date',
               total_cost : { '$sum' : {'$multiply' : ['$items.cost', '$items.donating']} }
             }}
           ], function(err, result) {
