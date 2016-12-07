@@ -9,7 +9,7 @@ from Tkinter import *
 camera = PiCamera()
 image_path = '/home/pi/Desktop/image.jpg'
 camera.rotation = 180
-camera.start_preview(fullscreen=False, window = (315, -20, 240, 180))
+camera.start_preview(fullscreen=False, window = (315, -20, 240, 170))
 
 #Capture Image
 def capture_image():
@@ -42,7 +42,9 @@ f = Frame(win)
 b1 = Button(f, text="Capture Image")
 b2 = Button(f,text="Stop Camera")
 b1.pack(side=LEFT, padx =5)
+b1.config( height = 5, width = 10)
 b2.pack(side=LEFT, padx =5)
+b2.config( height = 5, width = 10)
 l = Label(win, text=" <- Image product label of item")
 l.pack(side=TOP)
 f.pack()
