@@ -83,7 +83,7 @@ var test;
         var donating = item.donating;
         total += cost * donating;
       });
-      return total;
+      return Math.round(total * 100) / 100;
     },
     getDates: function() {
       var arr = [];
@@ -100,7 +100,8 @@ var test;
       var arr = [];
       this.costCollection.each(function(model) {
         var costObj = model.attributes;
-        arr.push(costObj.total_cost);
+        var cost = Math.round(costObj.total_cost * 100) / 100;
+        arr.push(cost);
       });
       // Reverse because DB returns earliest case last
       arr.push('Cost over Time');
