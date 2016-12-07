@@ -74,18 +74,6 @@ var OnboardingView = Backbone.View.extend({
       $(this.el).find(this.pg_surgeon).show();
     },
     toSession: function(){
-      $.ajax({
-          url:"send_photo_buttons",
-          type: "get",
-          success: function(res){
-            console.log("success", res);
-          }
-        }).done(function(o){
-          //do something
-          console.log("done", o);
-        });
-
-
         var selected_surgery = $("select#list_surgeries option:selected").text();
         var selected_surgeon = $("select#list_surgeons option:selected").text();
         var dataString = {"surgeon" :selected_surgeon , "surgery_type":selected_surgery};
@@ -97,6 +85,16 @@ var OnboardingView = Backbone.View.extend({
            contentType: "application/json",
            success: function(res) {
             window.location.href = '/cases/' + res.case_number //change to correct id
+            $.ajax({
+                url:"send_photo_buttons/" + res.case_number,
+                type: "get",
+                success: function(res){
+                  console.log("success", res);
+                }
+              }).done(function(o){
+                //do something
+                console.log("done", o);
+              });
            },
            error: function(e){
              console.log(e);

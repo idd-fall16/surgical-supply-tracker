@@ -18,7 +18,10 @@ def capture_image():
     #send photo
     hostname_local = 'http://localhost:3000'
     hostname_cloud = 'http://surgitrack.tech'
-    case_number = '1'
+    try:
+        case_number = sys.argv[1]
+    except IndexError:
+        case_number = '1'
     call_string = hostname_cloud + '/api/cases/' + case_number + '/items/photo'
     files = { 'devicePicture': open(image_path, 'rb') }
 
