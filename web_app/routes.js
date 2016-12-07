@@ -180,9 +180,10 @@ module.exports = function(app, runningInCloud) {
                     res.status(400).send('Error: could not save new item');
                   } else {
                     if (!runningInCloud) {
+                        res.status(200).send('Added item in:\n' + matchingCase);
                       request({
                         uri: 'http://surgitrack.tech/api/cases/'
-                              + req.params.case_number + '/items/photo',
+                              + req.params.case_number + '/items/json',
                         method: 'POST',
                         json: newItem,
                       }, function(err, res, body) {
@@ -190,7 +191,6 @@ module.exports = function(app, runningInCloud) {
                         console.log(body);
                       });
                     }
-                    res.status(200).send('Added item in:\n' + matchingCase);
                   }
                 });
               }
