@@ -29,7 +29,12 @@ itemSchema.statics.classifyItem = function(text) {
  var titles = {
    catheter : 'Safety IV Catheters',
    tracheostomy : 'Tracheostomy Tube Cuffless',
-   transpac : 'Transpac IV Monitoring Kit'
+   transpac : 'Transpac IV Monitoring Kit',
+   gauze : 'Dermacea USP Type VII Gauze (Covidien)',
+   secondarySet : 'IV Secondary Set',
+   injection: '0.9% Sodium Chloride Injection USP',
+   swanGanz: 'Swan-Ganz (Edwards Lifesciences)',
+
  }
  var textArray = Array.from(text);
  console.log('Classifying off of: ' + textArray);
@@ -46,6 +51,33 @@ itemSchema.statics.classifyItem = function(text) {
  if (textArray.includes('TRANSPAC') || textArray.includes('MONITORING')) {
    console.log ('Classified: ' + titles.transpac);
    return titles.transpac;
+ }
+ if (textArray.includes('COVIDIEN') || textArray.includes('Derma')) {
+   console.log ('Classified: ' + titles.gauze);
+   return titles.gauze;
+ }
+ if (textArray.includes('TEAR') || textArray.includes('Alaris')
+     || textArray.includes('Secondary') || textArray.includes('WARNING')
+     || textArray.includes('DIRECTIONS')) {
+   console.log ('Classified: ' + titles.gauze);
+   return titles.gauze;
+ }
+ if (textArray.includes('TEAR') || textArray.includes('Alaris')
+     || textArray.includes('Secondary') || textArray.includes('WARNING')
+     || textArray.includes('DIRECTIONS')) {
+   console.log ('Classified: ' + titles.secondarySet);
+   return titles.secondarySet;
+ }
+ if (textArray.includes('SODIUM') || textArray.includes('CHLORIDE')
+     || textArray.includes('INJECTION') || textArray.includes('USP')
+     || textArray.includes('0.9%')) {
+   console.log ('Classified: ' + titles.injection);
+   return titles.injection;
+ }
+ if (textArray.includes('Edwards') || textArray.includes('Lifesciences')
+     || textArray.includes('Swan-Ganz') || textArray.includes('E') {
+   console.log ('Classified: ' + titles.swanGanz);
+   return titles.swanGanz;
  }
  return 'Unknown Item';
 }
