@@ -19,7 +19,8 @@ app.use(express.static(__dirname + '/css'));
 // routes ==================================================
 // Is this instance running in the cloud?
 var runningInCloud = false;
-if (process.argv[3] === '--cloud' || process.argv[3] === '-c') {
+if (process.argv.includes('--cloud') || process.argv.includes('-c')) {
+  console.log('Running app in cloud mode (no extra requests).');
   runningInCloud = true;
 }
 require('./routes.js')(app, runningInCloud); // pass our application into our routes
@@ -35,7 +36,7 @@ app.listen(port, function() {
     console.log("Running on port: " + port);
     exports = module.exports = app;
 
-    if (process.argv[2] === '--seed' || process.argv[2] === '-s') {
+    if (process.argv.includes('--seed') || process.argv.includes('-s')) {
       console.log('Seeding database...');
       fs.readFile('dummyCases.json', function(err, data) {
         if (err) {
