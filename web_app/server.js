@@ -17,7 +17,12 @@ app.use(express.static(__dirname + '/public')); // set the static files location
 app.use(express.static(__dirname + '/css'));
 
 // routes ==================================================
-require('./routes.js')(app); // pass our application into our routes
+// Is this instance running in the cloud?
+var runningInCloud = false;
+if (process.argv[3] === '--cloud' || process.argv[3] === '-c') {
+  runningInCloud = true;
+}
+require('./routes.js')(app, runningInCloud); // pass our application into our routes
 
 // models (pretty much just for seeding)
 var models = require('./models.js');

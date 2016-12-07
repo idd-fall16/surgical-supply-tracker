@@ -27,7 +27,7 @@ var vision = require('@google-cloud/vision')({
 // Secondary requests
 var request = require('request');
 
-module.exports = function(app) {
+module.exports = function(app, runningInCloud) {
     // Server Routes ==================
     /**
      * Creates a new case assignment. Expects a case_number as parameter passed in in the URL.
@@ -89,14 +89,16 @@ module.exports = function(app) {
           if (err) {
             res.status(400).send(err);
           } else {
-            request({
-              uri: 'http://surgitrack.tech/api/cases',
-              method: 'POST',
-              json: newCase
-            }, function(err, res, body) {
-              console.log('Reponse from cloud server:');
-              console.log(body);
-            });
+            if (!runningInCloud) {
+              request({
+                uri: 'http://surgitrack.tech/api/cases',
+                method: 'POST',
+                json: newCase
+              }, function(err, res, body) {
+                console.log('Reponse from cloud server:');
+                console.log(body);
+              });
+            }
             res.status(200).send(newCase);
           }
         });
@@ -177,15 +179,17 @@ module.exports = function(app) {
                   if (err) {
                     res.status(400).send('Error: could not save new item');
                   } else {
-                    request({
-                      uri: 'http://surgitrack.tech/api/cases/'
-                            + req.params.case_number + '/items/photo',
-                      method: 'POST',
-                      json: newItem,
-                    }, function(err, res, body) {
-                      console.log('Reponse from cloud server:');
-                      console.log(body);
-                    });
+                    if (!runningInCloud) {
+                      request({
+                        uri: 'http://surgitrack.tech/api/cases/'
+                              + req.params.case_number + '/items/photo',
+                        method: 'POST',
+                        json: newItem,
+                      }, function(err, res, body) {
+                        console.log('Reponse from cloud server:');
+                        console.log(body);
+                      });  
+                    }
                     res.status(200).send('Added item in:\n' + matchingCase);
                   }
                 });
