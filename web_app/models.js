@@ -102,7 +102,7 @@ caseSchema.methods.addItem = function(newItem) {
 caseSchema.plugin(autoIncrement.plugin, {
   model: 'Case',
   field: 'case_number',
-  startAt: 19,
+  startAt: 37,
 });
 var Case = mongoose.model('Case', caseSchema);
 
