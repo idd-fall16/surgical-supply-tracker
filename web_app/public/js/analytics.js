@@ -93,7 +93,9 @@ var test;
         arr.push(costObj._id.substring(0, 10));
       });
       // Reverse because DB returns earliest case last
-      return arr.reverse();
+      arr.reverse();
+      arr.push(new Date().toLocaleDateString());
+      return arr;
     },
     getTotalCostsOverDates: function() {
       var arr = ['Cost over Time'];
@@ -102,6 +104,7 @@ var test;
         var cost = Math.round(costObj.total_cost * 100) / 100;
         arr.push(cost);
       });
+      arr.push(this.cost);
       return arr;
     },
     renderItemUsageChart : function() {
