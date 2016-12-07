@@ -28,6 +28,7 @@ var CasesView = Backbone.View.extend({
   render: function(){
     var scope = this;
     console.log("render")
+    debugger;
     scope.case_table.empty();
     _.each(this.collection.models, function(model) {
       var case_attributes = model.attributes;

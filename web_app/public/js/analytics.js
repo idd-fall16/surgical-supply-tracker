@@ -5,6 +5,7 @@ var test;
     // Specially named function that returns only the case object's item list
     // when referenced
     parse: function(data) {
+      this.case_number = data.case_number;
       console.log("Parsed data.items: " + data.items);
       return data.items;
     }
@@ -19,13 +20,15 @@ var test;
   var AnalyticsView = Backbone.View.extend({
     cost_el: $('.total-cost'),
     cost: 0,
+    case_table: $('#page_content_table'),
+    template: _.template($('#page_content_table_template').html()),
+    case_number: $('#case_number'),
     initialize: function(options) {
       var scope = this;
 
       test = this;
       this.collection = options.collection;
       this.costCollection = options.costCollection;
-
       this.listenTo(this.collection, 'add', function() {
         console.log('collection changed');
         this.render()
@@ -34,19 +37,29 @@ var test;
         console.log('cost collection changed');
         this.render()
       });
-      scope.collection.fetch();
-      scope.costCollection.fetch();
+      scope.collection.fetch().done(scope.render());
+      scope.costCollection.fetch().done(scope.render());
     },
     render: function() {
       var scope = this;
-
+      $(scope.case_number).empty();
+      $(scope.case_number).append(scope.collection.case_number);
       scope.cost = scope.getTotalCost();
       scope.cost_el.text('$' + scope.cost);
       scope.renderItemUsageChart();
 
       var dates = scope.getDates();
       var allCosts = scope.getTotalCostsOverDates();
+
       scope.renderCostOverTimeChart(dates, allCosts);
+
+      this.case_table.empty();
+      // this.case_items = this.model.get("items");
+      this.collection.each(function(model) {
+        var case_item = model.attributes;
+        var new_case_item = scope.template(case_item);
+        scope.case_table.append(new_case_item);
+      });
     },
     getCounts: function(fieldName) {
       if (fieldName != 'donating' && fieldName != 'total'

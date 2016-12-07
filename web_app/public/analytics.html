@@ -8,58 +8,57 @@
       <header id="page_header">
         <div class="row page_header_title ">
             <div class="small-12 columns">
-              <h4>Analytics Case ID</h4>
+              <h4>Analytics Case <span id="case_number"></span></h4>
             </div>
         </div>
       </header>
 
 
       <section id="page_content">
-        <div class="row">
-          <div class="small-3 small-offset-5 columns">
-              <div class="switch large">
-                <input class="switch-input" id="yes-no" type="checkbox" name="exampleSwitch">
-                <label class="switch-paddle" for="yes-no">
-                  <span class="show-for-sr">Do you like me?</span>
-                  <span class="switch-active" aria-hidden="true">$</span>
-                  <span class="switch-inactive" aria-hidden="true">Items</span>
-                </label>
-              </div>
-          </div>
-        </div>
+        <div class="row ">
         <div class="row ">
             <!--  replace with js render -->
             <div class="small-12 columns">
+              <ul class="tabs" data-tabs id="example-tabs">
+                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Items Used</a></li>
+                <li class="tabs-title"><a href="#panel2">Cost Over Time</a></li>
+              </ul>
 
-
-                <h2>Item Usage</h2>
+            <div class="tabs-content" data-tabs-content="example-tabs">
+              <div class="tabs-panel is-active" id="panel1">
                 <div class="item-usage" data-toggler=".show"></div>
-                <h2>Cost Over Time</h2>
+              </div>
+              <div class="tabs-panel" id="panel2">
                 <div class="cost-over-time" data-toggler=".hide"></div>
-                <h2>Total Cost</h2>
-                <h3 class="total-cost">$761</h3>
-                <h2>Complete List</h2>
-                <table class="small-12 columns">
-                  <thead>
-                    <tr>
-                      <th>Item Name</th>
-                      <th>Donating</th>
-                      <th>Total</th>
-                    </tr>
-                  </thead>
-                  <tbody id="page_content_table">
-                    <tr>
-                      <td>Gauze</td>
-                      <td>2</td>
-                      <td>5</td>
-                    </tr>
-                    <tr>
-                      <td>TRANSPAC</td>
-                      <td>1</td>
-                      <td>3</td>
-                    </tr>
-                  </tbody>
-                </table>
+              </div>
+            </div>
+
+
+
+
+                <!-- <h4>Total Cost</h4>
+                <h3 class="total-cost">$761</h3> -->
+                <div id="items_list">
+                  <h4>Complete List</h4>
+                  <table class="small-12 columns">
+                    <thead>
+                      <tr>
+                        <th>Item Name</th>
+                        <th>Donating</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody id="page_content_table">
+                      <script type="text/template" id="page_content_table_template">
+                        <tr>
+                          <td><%= item_name %></td>
+                          <td><%= donating %></td>
+                          <td><%= total %></td>
+                        </tr>
+                      </script>
+                    </tbody>
+                  </table>
+                </div>
             </div>
         </div>
       </section>
