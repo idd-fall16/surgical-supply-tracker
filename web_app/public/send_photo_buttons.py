@@ -37,6 +37,7 @@ def close_camera():
 #Camera Buttons
 win = Tk()
 win.wm_title("Camera")
+win.attributes("-topmost", True)
 f = Frame(win)
 b1 = Button(f, text="Capture Image")
 b2 = Button(f,text="Stop Camera")
