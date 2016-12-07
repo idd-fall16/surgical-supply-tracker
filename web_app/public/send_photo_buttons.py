@@ -8,7 +8,8 @@ from Tkinter import *
 #PiCam Setup
 camera = PiCamera()
 image_path = '/home/pi/Desktop/image.jpg'
-camera.start_preview(fullscreen=False, window = (560, 75, 240, 180))
+camera.rotation = 180
+camera.start_preview(fullscreen=False, window = (560, 100, 240, 180))
 
 #Capture Image
 def capture_image():
@@ -18,11 +19,12 @@ def capture_image():
     #send photo
     hostname_local = 'http://localhost:3000'
     hostname_cloud = 'http://surgitrack.tech'
+
     try:
         case_number = sys.argv[1]
     except IndexError:
         case_number = '1'
-    call_string = hostname_cloud + '/api/cases/' + case_number + '/items/photo'
+    call_string = hostname_local + '/api/cases/' + case_number + '/items/photo'
     files = { 'devicePicture': open(image_path, 'rb') }
 
     res = requests.post(call_string, files=files)
