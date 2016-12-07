@@ -188,7 +188,7 @@ module.exports = function(app, runningInCloud) {
                       }, function(err, res, body) {
                         console.log('Reponse from cloud server:');
                         console.log(body);
-                      });  
+                      });
                     }
                     res.status(200).send('Added item in:\n' + matchingCase);
                   }
@@ -405,6 +405,7 @@ module.exports = function(app, runningInCloud) {
      });
 
      app.get('/cases', function (req, res) {
+       
          res.sendFile(path.join(__dirname + '/public/cases.html'));
      });
 }
