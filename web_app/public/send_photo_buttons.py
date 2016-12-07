@@ -5,11 +5,11 @@ import requests
 import sys
 from Tkinter import *
 
-PiCam Setup
+#PiCam Setup
 camera = PiCamera()
 image_path = '/home/pi/Desktop/image.jpg'
 camera.rotation = 180
-camera.start_preview(fullscreen=False, window = (560, 100, 240, 180))
+camera.start_preview(fullscreen=False, window = (315, -20, 240, 180))
 
 #Capture Image
 def capture_image():
@@ -43,13 +43,13 @@ b1 = Button(f, text="Capture Image")
 b2 = Button(f,text="Stop Camera")
 b1.pack(side=LEFT, padx =5)
 b2.pack(side=LEFT, padx =5)
-l = Label(win, text="Image product label of item")
+l = Label(win, text=" <- Image product label of item")
 l.pack(side=TOP)
 f.pack()
 screenwidth = f.winfo_screenwidth()
 windowwidth = f.winfo_width()
 distance = screenwidth - windowwidth
-win.geometry('+%s+0' % distance)
+win.geometry('+%s+0' % 550)
 
 #Button Commands
 b1.configure(command=capture_image)
