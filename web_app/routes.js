@@ -167,38 +167,42 @@ module.exports = function(app, runningInCloud) {
               cost: 0
             });
             // Find case with corresponding case number
-            models.Case.findOne({ case_number: req.params.case_number }, function (err, matchingCase) {
-              if (err || !matchingCase || !req.params.case_number) {
-                console.log('DB error.');
-                res.status(400).send(err);
-              } else if (!matchingCase) {
-                res.status(404).json({ "error" : "No matching case found."});
-              } else {
-                matchingCase.addItem(newItem);
-                matchingCase.save(function(err) {
-                  if (err) {
-                    res.status(400).send('Error: could not save new item');
-                  } else {
-                    if (!runningInCloud) {
-                      request({
-                        uri: 'http://surgitrack.tech/api/cases/'
-                              + req.params.case_number + '/items/json',
-                        method: 'POST',
-                        json: newItem,
-                      }, function(secondaryErr, secondaryRes, secondaryBody) {
-                        console.log('Reponse from cloud server:');
-                        console.log(secondaryBody);
-                        // Have to delay the origin response until the end
-                        res.status(200).send('Added item in:\n' + matchingCase);
-                      });
+            try {
+              models.Case.findOne({ case_number: req.params.case_number }, function (err, matchingCase) {
+                if (err || !matchingCase || !req.params.case_number) {
+                  console.log('DB error.');
+                  res.status(400).send(err);
+                } else if (!matchingCase) {
+                  res.status(404).json({ "error" : "No matching case found."});
+                } else {
+                  matchingCase.addItem(newItem);
+                  matchingCase.save(function(err) {
+                    if (err) {
+                      res.status(400).send('Error: could not save new item');
                     } else {
-                      // Without a secondary request, just send response
-                      res.status(200).send('Added item in:\n' + matchingCase);
+                      if (!runningInCloud) {
+                        request({
+                          uri: 'http://surgitrack.tech/api/cases/'
+                                + req.params.case_number + '/items/json',
+                          method: 'POST',
+                          json: newItem,
+                        }, function(secondaryErr, secondaryRes, secondaryBody) {
+                          console.log('Reponse from cloud server:');
+                          console.log(secondaryBody);
+                          // Have to delay the origin response until the end
+                          res.status(200).send('Added item in:\n' + matchingCase);
+                        });
+                      } else {
+                        // Without a secondary request, just send response
+                        res.status(200).send('Added item in:\n' + matchingCase);
+                      }
                     }
-                  }
-                });
-              }
-            });
+                  });
+                }
+              });
+            } catch(err) {
+              console.log('Internal error--recovered without sending response.');
+            }
           }
         });
       }
